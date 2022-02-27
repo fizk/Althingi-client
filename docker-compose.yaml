@@ -10,8 +10,13 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./dist:/usr/local/apache2/htdocs/
+    depends_on:
+      - server
     ports:
       - 8082:80
+
+  server:
+    image: dev-server
 
   test:
     container_name: althingi_client_run_test
