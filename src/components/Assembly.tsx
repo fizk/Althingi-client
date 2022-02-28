@@ -1,7 +1,8 @@
-import { gql, useQuery } from "@apollo/client";
 import React from "react";
+import { gql, useQuery } from "@apollo/client";
 import { Link, Outlet, useParams } from "react-router-dom";
 import type { AssemblyType } from '../index.d';
+import { Spinner } from "../items/Spinner";
 
 const ASSEMBLY_QUERT = gql`
   query assembly ($assembly: ID!) {
@@ -13,14 +14,14 @@ const ASSEMBLY_QUERT = gql`
 }
 `;
 
-export const AssemblyPage = () => {
+export const Assembly = () => {
     const params = useParams();
     const { loading, error, data } = useQuery<{ Assembly: AssemblyType }>(
         ASSEMBLY_QUERT,
         { variables: { assembly: params.assembly_id } }
     );
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner />;
     if (error) return <pre>{JSON.stringify(error, undefined, 4)}(</pre>;
 
     return (

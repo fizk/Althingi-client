@@ -2,8 +2,9 @@ import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import type { CongressmanType } from "../index.d";
+import { Spinner } from "../items/Spinner";
 
-const EXCHANGE_RATES = gql`
+const ASSEMBLY_CONGRESSMAN_QUERY = gql`
 query assemblyCongressman($assembly: ID! $congressman: ID!) {
   AssemblyCongressman (assembly: $assembly, congressman: $congressman) {
     ... congressman
@@ -20,14 +21,18 @@ export function AssemblyCongressman () {
     const { assembly_id, congressman_id } = useParams();
     const { loading, error, data } = useQuery<{
         AssemblyCongressman: CongressmanType ,
-    }>(EXCHANGE_RATES, { variables: { assembly: assembly_id, congressman: congressman_id}});
+    }>(
+        ASSEMBLY_CONGRESSMAN_QUERY,
+        { variables: { assembly: assembly_id, congressman: congressman_id}}
+    );
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner />;
     if (error) return <p>Error :(</p>;
 
     return (
         <>
-            <h4>{data?.AssemblyCongressman.id} {data?.AssemblyCongressman.name}</h4>
+            <h4>{data?.AssemblyCongressman.id}</h4>
+            <p>{data?.AssemblyCongressman.name}</p>
         </>
     )
 }

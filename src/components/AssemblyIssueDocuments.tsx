@@ -2,35 +2,39 @@ import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { DocumentType } from "../index.d";
+import { Spinner } from "../items/Spinner";
 
-const CONGRESSMEN_QUERY = gql`
-query ($assembly: ID!, $issue: ID!, $type: IssueType!){
-  AssemblyIssueDocuments(assembly: $assembly, issue:$issue, type: $type) {
+const ASSEMBLY_ISSUE_DOCUMENTS_QUERY = gql`
+query ($assembly: ID!, $issue: ID!, $category: IssueCategory!){
+  AssemblyIssueDocuments(assembly: $assembly, issue:$issue, category: $category) {
   	... document
   }
 }
 
-fragment document on Documents {
+fragment document on Document {
   id
   date
 }
 `;
 
 export function AssemblyIssueDocuments () {
-    const { assembly_id, issue_id, type} = useParams();
+    const { assembly_id, issue_id, category} = useParams();
     const { loading, error, data } = useQuery<{
         AssemblyIssueDocuments: Array<DocumentType>,
-    }>(CONGRESSMEN_QUERY, { variables: { assembly: assembly_id, issue: issue_id, type: type?.toUpperCase() } });
+    }>(
+        ASSEMBLY_ISSUE_DOCUMENTS_QUERY,
+        { variables: { assembly: assembly_id, issue: issue_id, category: category?.toUpperCase() } }
+    );
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner />;
     if (error) return <p>Error :(</p>;
 
     return (
         <ul>
             {data?.AssemblyIssueDocuments.map(document => (
-                <li>
-                    {document.id}
-                    {document.date}
+                <li key={document.id}>
+                    <h4>{document.id}</h4>
+                    <p>{document.date}</p>
                 </li>
             ))}
         </ul>

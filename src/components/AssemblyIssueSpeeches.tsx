@@ -2,10 +2,11 @@ import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { useParams } from "react-router-dom";
 import { SpeechType } from "../index.d";
+import { Spinner } from "../items/Spinner";
 
-const CONGRESSMEN_QUERY = gql`
-query AssemblyIssueSpeeches ($assembly: ID!, $issue: ID!, $type: IssueType!) {
-  AssemblyIssueSpeeches (assembly: $assembly, issue: $issue, type: $type) {
+const ASSEMBLY_ISSUE_SPEECHES_QUERY = gql`
+query AssemblyIssueSpeeches ($assembly: ID!, $issue: ID!, $category: IssueCategory!) {
+  AssemblyIssueSpeeches (assembly: $assembly, issue: $issue, category: $category) {
     ... speech
   }
 }
@@ -13,24 +14,29 @@ query AssemblyIssueSpeeches ($assembly: ID!, $issue: ID!, $type: IssueType!) {
 fragment speech on Speech {
   id
   text
+  congressman {id name}
 }
 `;
 
 export function AssemblyIssueSpeeches () {
-    const { assembly_id, issue_id, type} = useParams();
+    const { assembly_id, issue_id, category} = useParams();
     const { loading, error, data } = useQuery<{
         AssemblyIssueSpeeches: Array<SpeechType>,
-    }>(CONGRESSMEN_QUERY, { variables: { assembly: assembly_id, issue: issue_id, type: type?.toUpperCase() } });
+    }>(
+        ASSEMBLY_ISSUE_SPEECHES_QUERY,
+        { variables: { assembly: assembly_id, issue: issue_id, category: category?.toUpperCase() } }
+    );
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner />;
     if (error) return <p>Error :(</p>;
 
     return (
         <ul>
             {data?.AssemblyIssueSpeeches.map(issue => (
-                <li>
-                    {issue.id}
-                    {issue.text}
+                <li key={issue.id}>
+                    <h4>{issue.id}</h4>
+                    <h5>{issue.congressman?.name}</h5>
+                    <div>{issue.text}</div>
                 </li>
             ))}
         </ul>

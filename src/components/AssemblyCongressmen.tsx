@@ -2,8 +2,9 @@ import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
 import type { CongressmanType } from "../index.d";
+import { Spinner } from "../items/Spinner";
 
-const CONGRESSMEN_QUERY = gql`
+const ASSEMBLY_CONGRESSMEN_QUERY = gql`
 query assemblyCongressmen($assembly: ID!) {
   Primary: AssemblyCongressmen(assembly: $assembly, type: PRIMARY) {
     ...congressman
@@ -28,9 +29,12 @@ export function AssemblyCongressmen () {
         Primary: Array<CongressmanType> ,
         Substitude: Array<CongressmanType> ,
         President: Array<CongressmanType> ,
-    }>(CONGRESSMEN_QUERY, {variables: {assembly: assembly_id}});
+    }>(
+        ASSEMBLY_CONGRESSMEN_QUERY,
+        {variables: {assembly: assembly_id}}
+    );
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Spinner />;
     if (error) return <p>Error :(</p>;
 
     return (
@@ -40,7 +44,8 @@ export function AssemblyCongressmen () {
                 {data?.Primary.map(congressman => (
                     <li key={congressman.id}>
                         <Link to={`/loggjafarthing/${assembly_id}/thingmenn/${congressman.id}`}>
-                            {congressman.id} {congressman.name}
+                            <h4>{congressman.id}</h4>
+                            <p>{congressman.name}</p>
                         </Link>
                     </li>
                 ))}
@@ -50,7 +55,8 @@ export function AssemblyCongressmen () {
                 {data?.Substitude.map(congressman => (
                     <li key={congressman.id}>
                         <Link to={`/loggjafarthing/${assembly_id}/thingmenn/${congressman.id}`}>
-                            {congressman.id} {congressman.name}
+                            <h4>{congressman.id}</h4>
+                            <p>{congressman.name}</p>
                         </Link>
                     </li>
                 ))}
@@ -60,7 +66,8 @@ export function AssemblyCongressmen () {
                 {data?.President.map(congressman => (
                     <li key={congressman.id}>
                         <Link to={`/loggjafarthing/${assembly_id}/thingmenn/${congressman.id}`}>
-                            {congressman.id} {congressman.name}
+                            <h4>{congressman.id}</h4>
+                            <p>{congressman.name}</p>
                         </Link>
                     </li>
                 ))}
