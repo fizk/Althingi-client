@@ -4,6 +4,7 @@ import { Home } from './Home';
 import { AssemblySummary } from './AssemblySummary';
 import { AssemblyIssues } from './AssemblyIssues';
 import { AssemblyCongressmen } from './AssemblyCongressmen';
+import { AssemblyCongressman } from './AssemblyCongressman';
 import { AssembliesPage } from '../pages/AssembliesPage';
 import { AssemblyPage } from '../pages/AssemblyPage';
 import './App.css';
@@ -24,6 +25,7 @@ export function App() {
                     <Route path="" element={<AssemblySummary />} />
                     <Route path="thingmal" element={<AssemblyIssues />} />
                     <Route path="thingmenn" element={<AssemblyCongressmen />} />
+                    <Route path="thingmenn/:congressman_id" element={<AssemblyCongressman />} />
                 </Route>
             </Routes>
         </>
