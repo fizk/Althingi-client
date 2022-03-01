@@ -7,11 +7,21 @@ export interface AssemblyType {
     to: Maybe<string>
 }
 
+export interface PartyType {
+    id: number
+    name: string
+    abbrShort: string
+    abbrLong: string
+    color: Maybe<string>
+}
+
 export interface CongressmanType {
     id: number
     name: string
     birth: string
     abbreviation: Maybe<string>
+    parties: PartyType[]
+    constituencies: Constituency[]
 }
 
 export interface IssueType {
@@ -57,4 +67,20 @@ export interface SpeechType {
     iteration: Maybe<string>
     wordCount: Maybe<number>
     validated: Maybe<boolean>
+}
+
+export interface Party {
+    id: number
+    name: string
+    abbrShort: string
+    abbrLong: string
+    color: Maybe<string>
+}
+
+export interface Constituency {
+    id: number
+    name: string
+    abbrShort: string
+    abbrLong: Maybe<string>
+    description: Maybe<string>
 }
