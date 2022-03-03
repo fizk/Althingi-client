@@ -12,6 +12,7 @@ services:
       - ./dist:/usr/local/apache2/htdocs/
     depends_on:
       - server
+      - thumbor
     ports:
       - 8082:80
 
@@ -27,3 +28,14 @@ services:
       context: .
       dockerfile: Dockerfile
     command: npm run test
+
+
+  thumbor:
+    container_name: althingi-image-server
+    image: minimalcompact/thumbor:6.7.5
+    restart: on-failure
+    logging:
+        driver: "json-file"
+        options:
+            max-size: "200k"
+            max-file: "5"

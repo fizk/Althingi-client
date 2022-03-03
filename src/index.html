@@ -9,10 +9,34 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --font-xl: 1.563rem;
+            --font-lg: 1.25rem;
+            --font-md: 1rem;
+            --font-sm: 0.8rem;
+            --font-xs: 0.64rem;
+
+            --space-lg: 1.563rem;
+            --space-md: 1rem;
+            --space-sm: 0.64rem;
+
+            --color-white: white;
+        }
+        html, body {
+            box-sizing: border-box;
+        }
+        *, *:before, *:after {
+            box-sizing: inherit;
+        }
         body {
             background-color: rgb(250,250,250);
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: auto;
+            -moz-osx-font-smoothing: auto;
+            line-height: 1.25;
         }
         a {
             text-decoration: none;

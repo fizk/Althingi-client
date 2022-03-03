@@ -1,6 +1,6 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import type { AssemblyType } from '../index.d';
 import { Spinner } from "../items/Spinner";
 
@@ -33,9 +33,24 @@ export const Assembly = () => {
             </header>
             <nav>
                 <ul>
-                    <li><Link to={`/loggjafarthing/${data?.Assembly.id}`}>Samantekt</Link></li>
-                    <li><Link to={`/loggjafarthing/${data?.Assembly.id}/thingmal`}>Thingmal</Link></li>
-                    <li><Link to={`/loggjafarthing/${data?.Assembly.id}/thingmenn`}>Thingmenn</Link></li>
+                    <li>
+                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}`}
+                            style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}} end>
+                            Samantekt
+                        </NavLink>
+                        </li>
+                    <li>
+                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmal`}
+                            style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                            Thingmal
+                        </NavLink>
+                        </li>
+                    <li>
+                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmenn`}
+                            style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                            Thingmenn
+                        </NavLink>
+                    </li>
                 </ul>
             </nav>
             <main>

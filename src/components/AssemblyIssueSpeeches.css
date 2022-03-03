@@ -1,0 +1,20 @@
+.assembly-issue-speech__list {
+    display: flex;
+    flex-direction: column;
+    list-style: none;
+    padding: 0;
+    gap: var(--space-md);
+}
+.assembly-issue-speech__list-item {
+
+}
+
+.assembly-issue-speech__properties {
+    padding: var(--space-sm) 0;
+}
+
+.assembly-issue-speech__property {
+    font-weight: 300;
+    font-size: var(--font-sm);
+    margin: 0;
+}

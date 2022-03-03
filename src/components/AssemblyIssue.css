@@ -1,0 +1,23 @@
+.assembly-issue {
+    display: flex;
+}
+
+.assembly-issue__header {
+    width: 50%;
+}
+.assembly-issue__content {
+    width: 50%;
+}
+
+.assembly-issue__navigation {
+
+}
+.assembly-issue__navigation-list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-md);
+    padding: 0;
+}
+.assembly-issue__navigation-list-item {
+
+}

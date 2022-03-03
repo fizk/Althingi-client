@@ -15,6 +15,14 @@ export interface PartyType {
     color: Maybe<string>
 }
 
+export interface PersonType {
+    id: number
+    name: string
+    birth: string
+    death: Maybe<string>
+    abbreviation: Maybe<string>
+}
+
 export interface CongressmanType {
     id: number
     name: string

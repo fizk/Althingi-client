@@ -3,17 +3,24 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { DocumentType } from "../index.d";
 import { Spinner } from "../items/Spinner";
+import { DocumentCard } from "../items/DocumentCard";
+import { Card } from "../items/Card";
+import './AssemblyIssueDocuments.css';
 
 const ASSEMBLY_ISSUE_DOCUMENTS_QUERY = gql`
 query ($assembly: ID!, $issue: ID!, $category: IssueCategory!){
-  AssemblyIssueDocuments(assembly: $assembly, issue:$issue, category: $category) {
-  	... document
-  }
+    AssemblyIssueDocuments(assembly: $assembly, issue:$issue, category: $category) {
+        ... document
+    }
 }
 
 fragment document on Document {
-  id
-  date
+    id
+    assembly {id}
+    issue {id}
+    date
+    url
+    type
 }
 `;
 
@@ -30,11 +37,12 @@ export function AssemblyIssueDocuments () {
     if (error) return <p>Error :(</p>;
 
     return (
-        <ul>
+        <ul className="assembly-issue-documents__list">
             {data?.AssemblyIssueDocuments.map(document => (
-                <li key={document.id}>
-                    <h4>{document.id}</h4>
-                    <p>{document.date}</p>
+                <li key={document.id} className="assembly-issue-documents__list-item">
+                    <Card>
+                        <DocumentCard document={document} />
+                    </Card>
                 </li>
             ))}
         </ul>

@@ -1,0 +1,16 @@
+.assembly-congressmen__section {}
+
+.assembly-congressmen__list {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    list-style: none;
+    gap: var(--space-md);
+}
+
+.assembly-congressmen__list-item {
+
+}
+
+.assembly-congressmen__frame {
+    padding: var(--space-md);
+}

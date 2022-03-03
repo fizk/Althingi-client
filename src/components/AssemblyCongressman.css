@@ -1,0 +1,15 @@
+.assembly-congressman {
+    display: flex;
+    gap: var(--space-md);
+}
+.assembly-congressman__header {}
+.assembly-congressman__content {}
+.assembly-congressman__navigation {}
+
+.assembly-congressman__navigation-list {
+    display: flex;
+    gap: var(--space-md);
+    padding: 0;
+    list-style: none;
+}
+.assembly-congressman__navigation-item {}

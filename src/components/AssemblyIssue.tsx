@@ -1,8 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import { NavLink, Outlet, useParams } from "react-router-dom";
 import { IssueType } from "../index.d";
 import { Spinner } from "../items/Spinner";
+import './AssemblyIssue.css';
 
 const ASSEMBLY_ISSUE_QUERY = gql`
 query AssemblyIssue ($assembly: ID!, $issue: ID!, $category: IssueCategory!) {
@@ -31,8 +32,8 @@ export function AssemblyIssue() {
     if (error) return <p>Error :(</p>;
 
     return (
-        <div style={{display: 'flex'}}>
-            <div>
+        <section className="assembly-issue">
+            <header className="assembly-issue__header">
                 <h4>Assembly Issues: {data?.AssemblyIssue.name}:</h4>
                 <dl>
                     <dt>id</dt>
@@ -40,27 +41,37 @@ export function AssemblyIssue() {
                     <dt>type</dt>
                     <dd>{data?.AssemblyIssue.category}</dd>
                 </dl>
-            </div>
-            <div>
-                <nav>
+            </header>
+            <main className="assembly-issue__content">
+                <nav className="assembly-issue__navigation">
                     {data?.AssemblyIssue.category.toLowerCase() === 'a' && (
-                        <ul style={{display: 'flex', listStyle: 'none'}}>
-                            <li style={{padding: '0 10px'}}>
-                                <Link to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}`}>raedur</Link>
+                        <ul className="assembly-issue__navigation-list">
+                            <li className="assembly-issue__navigation-list-item">
+                                <NavLink to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}`}
+                                    end
+                                    style={({ isActive }) => isActive ? { textDecoration: 'underline'} : {}}>
+                                    raedur
+                                </NavLink>
                             </li>
-                            <li style={{ padding: '0 10px' }}>
-                                <Link to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}/skjol`}>skjol</Link>
+                            <li className="assembly-issue__navigation-list-item">
+                                <NavLink to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}/skjol`}
+                                    end
+                                    style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                                    skjol
+                                </NavLink>
                             </li>
                         </ul>
                     )}
                     {data?.AssemblyIssue.category.toLowerCase() === 'b' && (
                         <ul style={{ display: 'flex', listStyle: 'none' }}>
-                            <li style={{ padding: '0 10px' }}>raedur</li>
+                            <li className="assembly-issue__navigation-list-item">
+                                raedur
+                            </li>
                         </ul>
                     )}
                 </nav>
                 <Outlet />
-            </div>
-        </div>
+            </main>
+        </section>
     )
 }

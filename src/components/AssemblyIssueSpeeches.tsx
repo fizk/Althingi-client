@@ -1,8 +1,11 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
 import { Link, useParams } from "react-router-dom";
-import { SpeechType } from "../index.d";
+import ReactMarkdown from 'react-markdown'
 import { Spinner } from "../items/Spinner";
+import { CongressmanCard } from "../items/CongressmanCard";
+import type { SpeechType } from "../index.d";
+import './AssemblyIssueSpeeches.css';
 
 const ASSEMBLY_ISSUE_SPEECHES_QUERY = gql`
 query AssemblyIssueSpeeches ($assembly: ID!, $issue: ID!, $category: IssueCategory!) {
@@ -15,6 +18,8 @@ fragment speech on Speech {
   id
   assembly {id}
   text
+  type
+  from
   congressman {
       id
       name
@@ -36,22 +41,25 @@ export function AssemblyIssueSpeeches () {
     if (error) return <p>Error :(</p>;
 
     return (
-        <ul>
-            {data?.AssemblyIssueSpeeches.map(issue => (
-                <li key={issue.id}>
-                    <h4>{issue.id}</h4>
-                    <h5>
-                        <Link to={`/loggjafarthing/${issue.assembly.id}/thingmenn/${issue.congressman.id}`}>{issue.congressman?.name}</Link>
-                    </h5>
-                    <ul>
-                        {issue.congressman.parties.map(party =>(
-                            <li>
-                                <div style={{display: 'inline-block', width: 16, height: 16, backgroundColor: `#${party.color}`, borderRadius: '50%'}}></div>
-                                {party.name}
-                            </li>
-                        ))}
-                    </ul>
-                    <div>{issue.text}</div>
+        <ul className="assembly-issue-speech__list">
+            {data?.AssemblyIssueSpeeches.map(speech => (
+                <li key={speech.id} className="assembly-issue-speech__list-item">
+                    <Link to={`/loggjafarthing/${speech.assembly.id}/thingmenn/${speech.congressman.id}`}>
+                        <CongressmanCard congressman={speech.congressman}
+                            party={speech.congressman.parties.at(0)}>
+                            <div className="assembly-issue-speech__properties">
+                                <h5 className="assembly-issue-speech__property">{speech.type}</h5>
+                                <h5 className="assembly-issue-speech__property">{speech.from}</h5>
+                            </div>
+                        </CongressmanCard>
+                    </Link>
+                    <div>
+                        {speech.text && (
+                            <ReactMarkdown>
+                            {speech.text}
+                            </ReactMarkdown>
+                        )}
+                    </div>
                 </li>
             ))}
         </ul>

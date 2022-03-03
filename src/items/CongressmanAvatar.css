@@ -1,0 +1,26 @@
+.congressman-avatar {
+    display: inline-block;
+    position: relative;
+}
+
+.congressman-avatar__image {
+    vertical-align: bottom;
+}
+.congressman-avatar__image--cutout {
+    clip-path: path('M38.9189189,0 C60.4132443,0 77.8378378,17.4245935 77.8378378,38.9189189 C77.8378378,41.6792985 77.5504604,44.3725576 77.0039918,46.9704098 C73.5430721,44.617724 69.3644821,43.2432432 64.8648649,43.2432432 C52.923573,43.2432432 43.2432432,52.923573 43.2432432,64.8648649 C43.2432432,69.3644821 44.617724,73.5430721 46.969732,77.0036815 C44.3725576,77.5504604 41.6792985,77.8378378 38.9189189,77.8378378 C17.4245935,77.8378378 0,60.4132443 0,38.9189189 C0,17.4245935 17.4245935,0 38.9189189,0 Z');
+}
+.congressman-avatar__image--oval {
+    clip-path: circle(39px at 39px 39px);
+}
+
+.congressman-avatar__color {
+    width: 30px;
+    height: 30px;
+    background-color: pink;
+    border-radius: 50%;
+    position: absolute;
+    /* bottom: 7px;
+    right: 4px; */
+    bottom: 0px;
+    right: 0px;
+}

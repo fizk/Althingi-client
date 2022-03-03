@@ -3,6 +3,9 @@ import React from "react";
 import { Link, useParams } from "react-router-dom";
 import type { CongressmanType } from "../index.d";
 import { Spinner } from "../items/Spinner";
+import { Card } from "../items/Card";
+import { CongressmanCard } from "../items/CongressmanCard";
+import './AssemblyCongressmen.css';
 
 const ASSEMBLY_CONGRESSMEN_QUERY = gql`
 query assemblyCongressmen($assembly: ID!) {
@@ -20,6 +23,7 @@ query assemblyCongressmen($assembly: ID!) {
 fragment congressman on Congressman {
     id
     name
+    parties {id name color}
 }
 `;
 
@@ -39,39 +43,54 @@ export function AssemblyCongressmen () {
 
     return (
         <>
+        <section className="assembly-congressmen__section">
             <h3>Primary</h3>
-            <ul>
+            <ul className="assembly-congressmen__list">
                 {data?.Primary.map(congressman => (
-                    <li key={congressman.id}>
+                    <li key={congressman.id} className="assembly-congressmen__list-item">
                         <Link to={`/loggjafarthing/${assembly_id}/thingmenn/${congressman.id}`}>
-                            <h4>{congressman.id}</h4>
-                            <p>{congressman.name}</p>
+                            <Card>
+                                <div className="assembly-congressmen__frame">
+                                    <CongressmanCard congressman={congressman} party={congressman.parties?.at(0)} />
+                                </div>
+                            </Card>
                         </Link>
                     </li>
                 ))}
             </ul>
+        </section>
+        <section className="assembly-congressmen__section">
             <h3>Substitude</h3>
-            <ul>
+            <ul className="assembly-congressmen__list">
                 {data?.Substitude.map(congressman => (
-                    <li key={congressman.id}>
+                    <li key={congressman.id} className="assembly-congressmen__list-item">
                         <Link to={`/loggjafarthing/${assembly_id}/thingmenn/${congressman.id}`}>
-                            <h4>{congressman.id}</h4>
-                            <p>{congressman.name}</p>
+                            <Card>
+                                <div className="assembly-congressmen__frame">
+                                    <CongressmanCard congressman={congressman} party={congressman.parties?.at(0)} />
+                                </div>
+                            </Card>
                         </Link>
                     </li>
                 ))}
             </ul>
+        </section>
+        <section className="assembly-congressmen__section">
             <h3>President</h3>
-            <ul>
+            <ul className="assembly-congressmen__list">
                 {data?.President.map(congressman => (
-                    <li key={congressman.id}>
+                    <li key={congressman.id} className="assembly-congressmen__list-item">
                         <Link to={`/loggjafarthing/${assembly_id}/thingmenn/${congressman.id}`}>
-                            <h4>{congressman.id}</h4>
-                            <p>{congressman.name}</p>
+                            <Card>
+                                <div className="assembly-congressmen__frame">
+                                    <CongressmanCard congressman={congressman} party={congressman.parties?.at(0)} />
+                                </div>
+                            </Card>
                         </Link>
                     </li>
                 ))}
             </ul>
+        </section>
         </>
     )
 }

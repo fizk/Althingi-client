@@ -1,0 +1,16 @@
+.congressman-card {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.congressman-card__title {
+    font-weight: 400;
+    font-size: var(--font-md);
+    margin: 0;
+}
+.congressman-card__subtitle {
+    font-weight: 300;
+    font-size: var(--font-sm);
+    margin: 0;
+}

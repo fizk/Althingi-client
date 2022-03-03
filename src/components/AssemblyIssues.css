@@ -1,0 +1,16 @@
+.assembly-issues__list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+    margin: 0 var(--space-md);
+}
+
+
+.assembly-issues__options {
+}
+
+.assembly-issues__options-list {
+    display: flex;
+}
