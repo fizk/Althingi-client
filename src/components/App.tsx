@@ -1,6 +1,6 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { Link, NavLink, Route, Routes } from "react-router-dom";
+import { NavLink, Route, Routes } from "react-router-dom";
 import { Home } from './Home';
 import { Assemblies } from './Assemblies';
 import { Assembly } from './Assembly';
@@ -13,12 +13,14 @@ import { AssemblyCongressmen } from './AssemblyCongressmen';
 import { AssemblyCongressman } from './AssemblyCongressman';
 import { AssemblyCongressmanCurrent } from './AssemblyCongressmanCurrent';
 import { AssemblyCongressmanAll } from './AssemblyCongressmanAll';
+import { AssemblyPlenaries } from './AssemblyPlenaries';
+import { AssemblyPlenaryAgenda } from './AssemblyPlenaryAgenda';
 import './App.css';
 
 export const App: FunctionComponent = () => {
     return (
         <>
-            <nav>
+            <nav className="app__navigation">
                 <ul>
                     <li>
                         <NavLink to="/"
@@ -34,11 +36,16 @@ export const App: FunctionComponent = () => {
                     </li>
                 </ul>
             </nav>
+            <main className="app__content">
             <Routes>
                 <Route path="/" element={<Home />} />
                 <Route path="/loggjafarthing" element={<Assemblies />} />
                 <Route path="/loggjafarthing/:assembly_id" element={<Assembly />} >
                     <Route path="" element={<AssemblySummary />} />
+                    <Route path="thingfundir" element={<AssemblyPlenaries />} >
+                        <Route path="" element={<AssemblyPlenaryAgenda />} />
+                        <Route path=":plenary_id" element={<AssemblyPlenaryAgenda />} />
+                    </Route>
                     <Route path="thingmal" element={<AssemblyIssues />} />
                     <Route path="thingmal/:category/:issue_id" element={<AssemblyIssue />} >
                         <Route path="" element={<AssemblyIssueSpeeches />} />
@@ -51,6 +58,7 @@ export const App: FunctionComponent = () => {
                     </Route>
                 </Route>
             </Routes>
+            </main>
         </>
     );
 }

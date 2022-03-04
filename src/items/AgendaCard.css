@@ -1,0 +1,24 @@
+.agenda-card {}
+.agenda-card__header {
+    padding: var(--space-md);
+}
+.agenda-card__footer {
+
+}
+
+.agenda-card__title {
+    font-weight: 400;
+    font-size: var(--font-md);
+    margin: 0;
+}
+
+.agenda-card__subtitle {
+    font-weight: 300;
+    font-size: var(--font-sm);
+    margin: 0;
+}
+
+.agenda-card__divide {
+    border: none;
+    border-bottom: 1px solid var(--color-mid);
+}

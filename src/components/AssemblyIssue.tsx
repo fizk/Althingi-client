@@ -42,7 +42,7 @@ export function AssemblyIssue() {
                     <dd>{data?.AssemblyIssue.category}</dd>
                 </dl>
             </header>
-            <main className="assembly-issue__content">
+            <div className="assembly-issue__content">
                 <nav className="assembly-issue__navigation">
                     {data?.AssemblyIssue.category.toLowerCase() === 'a' && (
                         <ul className="assembly-issue__navigation-list">
@@ -50,14 +50,14 @@ export function AssemblyIssue() {
                                 <NavLink to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}`}
                                     end
                                     style={({ isActive }) => isActive ? { textDecoration: 'underline'} : {}}>
-                                    raedur
+                                    ræður
                                 </NavLink>
                             </li>
                             <li className="assembly-issue__navigation-list-item">
                                 <NavLink to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}/skjol`}
                                     end
                                     style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                                    skjol
+                                    skjöl
                                 </NavLink>
                             </li>
                         </ul>
@@ -65,13 +65,13 @@ export function AssemblyIssue() {
                     {data?.AssemblyIssue.category.toLowerCase() === 'b' && (
                         <ul style={{ display: 'flex', listStyle: 'none' }}>
                             <li className="assembly-issue__navigation-list-item">
-                                raedur
+                                rædur
                             </li>
                         </ul>
                     )}
                 </nav>
                 <Outlet />
-            </main>
+            </div>
         </section>
     )
 }

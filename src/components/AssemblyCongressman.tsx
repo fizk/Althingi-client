@@ -41,7 +41,7 @@ export function AssemblyCongressman () {
                 <p>{data?.Person.abbreviation}</p>
                 <p>{data?.Person.birth}</p>
             </header>
-            <main className="assembly-congressman__content">
+            <div className="assembly-congressman__content">
                 <nav className="assembly-congressman__navigation">
                     <ul className="assembly-congressman__navigation-list">
                         <li className="assembly-congressman__navigation-item">
@@ -61,7 +61,7 @@ export function AssemblyCongressman () {
                     </ul>
                 </nav>
                 <Outlet />
-            </main>
+            </div>
         </section>
     )
 }

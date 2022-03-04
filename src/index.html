@@ -21,6 +21,10 @@
             --space-sm: 0.64rem;
 
             --color-white: white;
+            --color-light: rgb(250,250,250);
+            --color-mid: #e6e0e0;
+            --color-dark: rgb(250,250,250);
+
         }
         html, body {
             box-sizing: border-box;
@@ -29,7 +33,7 @@
             box-sizing: inherit;
         }
         body {
-            background-color: rgb(250,250,250);
+            background-color: var(--color-light);
             font-family: 'Montserrat', sans-serif;
             font-weight: 300;
             -webkit-font-smoothing: antialiased;
@@ -37,9 +41,20 @@
             -webkit-font-smoothing: auto;
             -moz-osx-font-smoothing: auto;
             line-height: 1.25;
+            margin: 0;
         }
         a {
             text-decoration: none;
+        }
+
+        @media screen and (min-width: 768px) {
+            /* Tablet 768px */
+        }
+        @media screen and (min-width: 1280px) {
+            /* Laptop 1280px */
+        }
+        @media screen and (min-width: 1920px) {
+            /* Desktop  */
         }
     </style>
 </head>

@@ -1,5 +1,21 @@
+:root {
+    --assembly-congressman-column-count: 1
+}
+@media screen and (min-width: 768px) {
+    :root {
+        --assembly-congressman-column-count: 2
+    }
+}
+@media screen and (min-width: 1280px) {
+    /* Laptop 1280px */
+}
+@media screen and (min-width: 1920px) {
+    /* Desktop  */
+}
+
 .assembly-congressman {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(var(--assembly-congressman-column-count), 1fr);
     gap: var(--space-md);
 }
 .assembly-congressman__header {}

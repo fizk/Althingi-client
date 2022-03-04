@@ -1,9 +1,29 @@
+:root {
+    --assembly-congressmen-column-count: 1
+}
+@media screen and (min-width: 768px) {
+    :root {
+        --assembly-congressmen-column-count: 2
+    }
+}
+@media screen and (min-width: 1280px) {
+    :root {
+        --assembly-congressmen-column-count: 3
+    }
+}
+@media screen and (min-width: 1920px) {
+    :root {
+        --assembly-congressmen-column-count: 4
+    }
+}
+
 .assembly-congressmen__section {}
 
 .assembly-congressmen__list {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(var(--assembly-congressmen-column-count), 1fr);
     list-style: none;
+    padding: 0;
     gap: var(--space-md);
 }
 

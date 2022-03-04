@@ -1,12 +1,28 @@
+:root {
+    --assembly-issue-column-count: 1
+}
+@media screen and (min-width: 768px) {
+    :root {
+        --assembly-issue-column-count: 2
+    }
+}
+@media screen and (min-width: 1280px) {
+    /* Laptop 1280px */
+}
+@media screen and (min-width: 1920px) {
+    /* Desktop  */
+}
+
 .assembly-issue {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(var(--assembly-issue-column-count), 1fr)
 }
 
 .assembly-issue__header {
-    width: 50%;
+
 }
 .assembly-issue__content {
-    width: 50%;
+
 }
 
 .assembly-issue__navigation {

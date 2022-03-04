@@ -77,7 +77,7 @@ export interface SpeechType {
     validated: Maybe<boolean>
 }
 
-export interface Party {
+export interface PartyType {
     id: number
     name: string
     abbrShort: string
@@ -85,10 +85,34 @@ export interface Party {
     color: Maybe<string>
 }
 
-export interface Constituency {
+export interface ConstituencyType {
     id: number
     name: string
     abbrShort: string
     abbrLong: Maybe<string>
     description: Maybe<string>
+}
+
+export interface PlenaryType {
+    id: number
+    name: string
+    assembly: AssemblyType
+    from: string
+    to: string
+    agenda: PlenaryItemType[]
+}
+
+export interface AgendaType {
+    id: number
+    assembly: AssemblyType
+    issue: IssueType
+    iterationType: Maybe<string>
+    iterationContinue: Maybe<string>
+    iterationComment: Maybe<string>
+    comment: Maybe<string>
+    commentType: Maybe<string>
+    posed: Maybe<CongressmanType>
+    answerer: Maybe<CongressmanType>
+    counterAnswerer: Maybe<CongressmanType>
+    instigator: Maybe<CongressmanType>
 }

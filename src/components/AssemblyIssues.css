@@ -1,15 +1,34 @@
+:root {
+    --assembly-issue-columns-count: 1
+}
+
+@media screen and (min-width: 768px) { /* Tablet 768px */
+    :root {
+        --assembly-issue-columns-count: 2
+    }
+}
+@media screen and (min-width: 1280px) { /* Laptop 1280px */
+    :root {
+        --assembly-issue-columns-count: 3
+    }
+}
+@media screen and (min-width: 1920px) { /* Desktop  */
+    :root {
+        --assembly-issue-columns-count: 4
+    }
+}
+
+
 .assembly-issues__list {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(var(--assembly-issue-columns-count), 1fr);
     gap: var(--space-md);
     list-style: none;
     padding: 0;
-    margin: 0 var(--space-md);
+    margin: 0;
 }
 
-
-.assembly-issues__options {
-}
+.assembly-issues__options {}
 
 .assembly-issues__options-list {
     display: flex;

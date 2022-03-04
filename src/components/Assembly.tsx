@@ -42,20 +42,24 @@ export const Assembly = () => {
                     <li>
                         <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmal`}
                             style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                            Thingmal
+                            Þingmál
+                        </NavLink>
+                    </li>
+                    <li>
+                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingfundir`}
+                            style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                            Þingfundir
                         </NavLink>
                         </li>
                     <li>
                         <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmenn`}
                             style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                            Thingmenn
+                            Þingmenn
                         </NavLink>
                     </li>
                 </ul>
             </nav>
-            <main>
-                <Outlet />
-            </main>
+            <Outlet />
         </>
     )
 

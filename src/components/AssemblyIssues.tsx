@@ -82,7 +82,7 @@ export function AssemblyIssues () {
                     </ul>
                 </form>
             </nav>
-            <main>
+            <div>
                 {loading && <Spinner />}
                 {!loading && (
                     <ul className="assembly-issues__list">
@@ -97,7 +97,7 @@ export function AssemblyIssues () {
                         ))}
                     </ul>
                 )}
-            </main>
+            </div>
         </section>
     )
 }
