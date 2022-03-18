@@ -21,6 +21,7 @@ query AssemblyCongressmen($assembly: ID!) {
   }
 }
 
+
 fragment congressmanSessions on CongressmanSessions {
   person { id name }
   assembly { id from to }
