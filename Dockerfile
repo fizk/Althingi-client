@@ -46,7 +46,8 @@ AddOutputFilterByType DEFLATE application/xhtml+xml \n \
 AddOutputFilterByType DEFLATE application/rss+xml \n \
 AddOutputFilterByType DEFLATE application/json \n \
 AddOutputFilterByType DEFLATE application/javascript \n \
-AddOutputFilterByType DEFLATE application/x-javascript " >> /usr/local/apache2/conf/httpd.conf;
+AddOutputFilterByType DEFLATE application/x-javascript \n \
+Listen 443" >> /usr/local/apache2/conf/httpd.conf;
 
 RUN if [ "$ENV" != "production" ] ; then \
     echo "<VirtualHost *:80> \n\
