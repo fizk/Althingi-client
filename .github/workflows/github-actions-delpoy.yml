@@ -28,7 +28,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          build-args: ENV=production
+          build-args:
+            - ENV=production
+            - DOMAIN=loggjafarthing.einarvalur.co
           labels: |
             git_commit=${{ github.sha }}
             github_run_id=${{ github.run_id }}

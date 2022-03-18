@@ -37,7 +37,8 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: 'src/index.html',
-          publicPath: '/'
+          publicPath: '/',
+          scriptLoading: "defer",
         })
     ],
   mode: 'development',

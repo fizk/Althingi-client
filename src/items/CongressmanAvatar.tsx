@@ -16,7 +16,7 @@ export const CongressmanAvatar: FunctionComponent<Props> = ({ congressman, party
                 alt={congressman.name}
                 loading="lazy"
                 className={classVariants('congressman-avatar__image', party ? ['cutout'] : ['oval'])}
-                src={`/myndir/unsafe/80x80/www.althingi.is/myndir/mynd/thingmenn/${congressman.id}/org/mynd.jpg`} />
+                src={`/myndir/unsafe/120x120/www.althingi.is/myndir/mynd/thingmenn/${congressman.id}/org/mynd.jpg`} />
             {party && (
                 <div className="congressman-avatar__color"
                     style={{backgroundColor: `#${party.color || 'gray'}`}}

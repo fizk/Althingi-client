@@ -17,24 +17,21 @@ FROM httpd:2.4.52-bullseye
 
 EXPOSE 80
 
+ARG ENV
+
 ARG API_URL=/graphql
 ARG API_HOST=http://server:3000
 ARG IMG_URL=/myndir
 ARG IMG_HOST=http://thumbor:80
-
-RUN echo "\
-RewriteEngine On\n\
-RewriteBase /\n\
-RewriteRule ^index\.html$ - [L]\n\
-RewriteCond %{REQUEST_FILENAME} !-f\n\
-RewriteCond %{REQUEST_FILENAME} !-d\n\
-RewriteRule . /index.html [L]\
-" > /usr/local/apache2/htdocs/.htaccess
+ARG DOMAIN=test.einarvalur.co
 
 RUN sed -i 's/#LoadModule proxy_module/LoadModule proxy_module/g' /usr/local/apache2/conf/httpd.conf; \
     sed -i 's/#LoadModule proxy_http_module/LoadModule proxy_http_module/g' /usr/local/apache2/conf/httpd.conf; \
     sed -i 's/#LoadModule rewrite_module/LoadModule rewrite_module/g' /usr/local/apache2/conf/httpd.conf; \
     sed -i 's/#LoadModule deflate_module/LoadModule deflate_module/g' /usr/local/apache2/conf/httpd.conf; \
+    sed -i 's/#LoadModule negotiation_module/LoadModule negotiation_module/g' /usr/local/apache2/conf/httpd.conf; \
+    sed -i 's/#LoadModule socache_shmcb_module/LoadModule socache_shmcb_module/g' /usr/local/apache2/conf/httpd.conf; \
+    sed -i 's/#LoadModule ssl_module/LoadModule ssl_module/g' /usr/local/apache2/conf/httpd.conf; \
     sed -i 's/AllowOverride None/AllowOverride All/g' /usr/local/apache2/conf/httpd.conf; \
     echo " <Location /server-status>\n \
 SetHandler server-status\n \
@@ -50,5 +47,66 @@ AddOutputFilterByType DEFLATE application/rss+xml \n \
 AddOutputFilterByType DEFLATE application/json \n \
 AddOutputFilterByType DEFLATE application/javascript \n \
 AddOutputFilterByType DEFLATE application/x-javascript " >> /usr/local/apache2/conf/httpd.conf;
+
+RUN if [ "$ENV" != "production" ] ; then \
+    echo "<VirtualHost *:80> \n\
+    ServerAdmin fizk78@gmail.com \n\
+    DocumentRoot /usr/local/apache2/htdocs \n\
+    \n\
+    <Directory /usr/local/apache2/htdocs/> \n\
+        Options Indexes FollowSymLinks \n\
+        AllowOverride None \n\
+        Require all granted \n\n\
+        \
+        RewriteEngine on \n\
+        RewriteCond %{REQUEST_FILENAME} !-d \n\
+        RewriteCond %{REQUEST_FILENAME} !-f \n\
+        RewriteRule . /index.html [L] \n\
+    </Directory> \n\
+    \n\
+</VirtualHost>" >> /usr/local/apache2/conf/httpd.conf;\
+fi ;
+
+RUN if [ "$ENV" = "production" ] ; then \
+    echo "<VirtualHost *:80> \n\
+    ServerAdmin fizk78@gmail.com \n\
+    DocumentRoot /usr/local/apache2/htdocs \n\
+    \n\
+    <Directory /usr/local/apache2/htdocs/> \n\
+        Options Indexes FollowSymLinks \n\
+        AllowOverride None \n\
+        Require all granted \n\n\
+        \
+        RewriteEngine on \n\
+        RewriteCond %{SERVER_NAME} =${DOMAIN} \n\
+        RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [END,NE,R=permanent] \n\
+    </Directory> \n\
+    \n\
+</VirtualHost>" >> /usr/local/apache2/conf/httpd.conf;\
+\
+    echo "<IfModule mod_ssl.c> \n\
+    <VirtualHost *:443> \n\
+        ServerAdmin fizk78@gmail.com \n\
+        DocumentRoot /usr/local/apache2/htdocs \n\
+        \n\
+        <Directory /usr/local/apache2/htdocs/> \n\
+            Options Indexes FollowSymLinks \n\
+            AllowOverride None \n\
+            Require all granted \n\n\
+\
+            RewriteEngine on \n\
+            RewriteCond %{REQUEST_FILENAME} !-d \n\
+            RewriteCond %{REQUEST_FILENAME} !-f \n\
+            RewriteRule . /index.html [L] \n\
+        </Directory> \n\
+        \n\
+        ServerName ${DOMAIN} \n\
+        SSLCertificateFile /etc/letsencrypt/live/${DOMAIN}/fullchain.pem \n\
+        SSLCertificateKeyFile /etc/letsencrypt/live/${DOMAIN}/privkey.pem \n\
+        Include /etc/letsencrypt/options-ssl-apache.conf \n\
+    </VirtualHost> \n\
+</IfModule>" >> /usr/local/apache2/conf/httpd.conf;\
+fi ;
+
 
 COPY --from=build-assets /app/dist/ /usr/local/apache2/htdocs
