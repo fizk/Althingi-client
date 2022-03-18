@@ -1,0 +1,28 @@
+.congressman-sitting-card {
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-md);
+    padding: var(--space-md);
+}
+
+.congressman-sitting-card__avatar {
+    grid-row: 1 / span 3;
+}
+.congressman-sitting-card__header {}
+.congressman-sitting-card__content {
+    grid-column: 2 / span 1;
+}
+.congressman-sitting-card__footer {
+    grid-column: 2 / span 1;
+}
+
+.congressman-sitting-card__title {
+    font-weight: 400;
+    font-size: var(--font-md);
+    margin: 0;
+}
+.congressman-sitting-card__subtitle {
+    font-weight: 300;
+    font-size: var(--font-sm);
+    margin: 0;
+}

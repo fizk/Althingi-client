@@ -1,0 +1,10 @@
+/* @todo make colors a css-property */
+.timeline {}
+
+.timeline__bar {}
+.timeline__bar--primary {
+    fill: #87b3c6;
+}
+.timeline__bar--secondary {
+    fill: #eae8e4;
+}

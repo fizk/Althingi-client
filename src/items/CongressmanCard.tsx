@@ -1,12 +1,12 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import type { CongressmanType, PartyType } from '../index.d';
+import type { PersonType, PartyType } from '../index.d';
 import { CongressmanAvatar } from './CongressmanAvatar';
 import { classVariants } from '../utils/classVariants';
 import './CongressmanCard.css';
 
 interface Props {
-    congressman: CongressmanType
+    congressman: PersonType
     party?: PartyType
 }
 

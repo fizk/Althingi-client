@@ -2,7 +2,7 @@ version: '3'
 
 services:
   run:
-    container_name: althingi_client_run
+    container_name: local-althingi-client-run
     build:
       args:
         - ENV=development
@@ -14,13 +14,13 @@ services:
       - server
       - thumbor
     ports:
-      - 8082:80
+      - 8282:80
 
   server:
     image: dev-server
 
   test:
-    container_name: althingi_client_run_test
+    container_name: local-althingi-client-test
     build:
       target: build-assets
       args:
@@ -31,7 +31,7 @@ services:
 
 
   thumbor:
-    container_name: althingi-image-server
+    container_name: local-althingi-client-thumbor
     image: minimalcompact/thumbor:6.7.5
     restart: on-failure
     logging:

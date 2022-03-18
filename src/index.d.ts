@@ -23,11 +23,7 @@ export interface PersonType {
     abbreviation: Maybe<string>
 }
 
-export interface CongressmanType {
-    id: number
-    name: string
-    birth: string
-    abbreviation: Maybe<string>
+export interface CongressmanType extends PersonType {
     parties: PartyType[]
     constituencies: Constituency[]
 }
@@ -115,4 +111,21 @@ export interface AgendaType {
     answerer: Maybe<CongressmanType>
     counterAnswerer: Maybe<CongressmanType>
     instigator: Maybe<CongressmanType>
+}
+
+export interface SessionType {
+    id: number
+    party: Maybe<PartyType>
+    constituency: Maybe<ConstituencyType>
+    from: string
+    to: Maybe<string>
+    abbr: Maybe<string>
+    type: 'með varamann' | 'þingmaður' | 'varamaður'
+}
+
+export interface CongressmanSessionsType {
+    id: number
+    person: PersonType
+    sessions: SessionType[]
+    assembly: AssemblyType
 }
