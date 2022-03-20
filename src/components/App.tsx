@@ -10,6 +10,7 @@ import { AssemblyIssueDocuments } from './AssemblyIssueDocuments';
 import { AssemblyIssueSpeeches } from './AssemblyIssueSpeeches';
 import { AssemblyIssue } from './AssemblyIssue';
 import { AssemblyConstituencies } from './AssemblyConstituencies';
+import { AssemblyParties } from './AssemblyParties';
 import { AssemblySessions } from './AssemblySessions';
 import { AssemblyCongressmen } from './AssemblyCongressmen';
 import { AssemblyCongressman } from './AssemblyCongressman';
@@ -57,6 +58,7 @@ export const App: FunctionComponent = () => {
                     <Route path="thingseta" element={<AssemblySessions />} >
                         <Route path="" element={<AssemblyCongressmen />} />
                         <Route path="kjordaemi" element={<AssemblyConstituencies />} />
+                        <Route path="flokkar" element={<AssemblyParties />} />
                     </Route>
                     <Route path="thingmenn/:congressman_id" element={<AssemblyCongressman />} >
                         <Route path="" element={<AssemblyCongressmanCurrent />} />

@@ -12,7 +12,6 @@ interface Props {
 }
 
 export const Timeline: FunctionComponent<Props> = ({ assembly, sessions }) => {
-
     const width = 300;
     const height = 22;
 
@@ -29,34 +28,29 @@ export const Timeline: FunctionComponent<Props> = ({ assembly, sessions }) => {
     return (
         <svg className="timeline" viewBox={`0 0 ${width} ${height}`} style={{ width: '100%' }} xmlns="http://www.w3.org/2000/svg">
             <g>
-                {
-                    sessions.map(item => (
-                        <rect key={item.from}
-                            className={classVariants('timeline__bar', item.type === "þingmaður" ? ['primary'] : ['secondary'])}
-                            x={scale(new Date(item.from))}
-                            y={0}
-                            height={10}
-                            width={item.to
-                                ? (scale(new Date(item.to))) - (scale(new Date(item.from)))
-                                : (scale(new Date())) - (scale(new Date(item.from)))
-                            }
-                        >
-                            <title>{`${item.from} ${item.to}`}</title>
-                        </rect>
-                    ))
-                }
+                {sessions.map(item => (
+                    <rect key={`${item.from}${item.to}`}
+                        className={classVariants('timeline__bar', item.type === "þingmaður" ? ['primary'] : ['secondary'])}
+                        x={scale(new Date(item.from))}
+                        y={0}
+                        height={10}
+                        width={item.to
+                            ? (scale(new Date(item.to))) - (scale(new Date(item.from)))
+                            : (scale(new Date())) - (scale(new Date(item.from)))
+                        }>
+                        <title>{`${item.from} ${item.to}`}</title>
+                    </rect>
+                ))}
             </g>
             <g>
-                {
-                    range.map(date => (
-                        <g key={date.getTime()}>
-                            <circle cx={scale(date)} cy={12} r="1" fill="#61DAFB" />
-                            <text textAnchor="middle" x={scale(date)} y="20" style={{ fontSize: '.5rem' }} >
-                                {date.getMonth() + 1}
-                            </text>
-                        </g>
-                    ))
-                }
+                {range.map(date => (
+                    <g key={date.getTime()}>
+                        <circle cx={scale(date)} cy={12} r="1" fill="#61DAFB" />
+                        <text textAnchor="middle" x={scale(date)} y="20" style={{ fontSize: '.5rem' }} >
+                            {date.getMonth() + 1}
+                        </text>
+                    </g>
+                ))}
             </g>
         </svg>
     )

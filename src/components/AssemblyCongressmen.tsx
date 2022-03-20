@@ -10,30 +10,30 @@ import './AssemblyCongressmen.css';
 const ASSEMBLY_CONGRESSMEN_QUERY = gql`
 query AssemblyCongressmen($assembly: ID!) {
 
-  Primaries: AssemblyCongressmen(assembly: $assembly, type: PRIMARY) {
-    ...congressmanSessions
-  }
-  Substitutes: AssemblyCongressmen(assembly: $assembly, type: SUBSTITUTE) {
-    ...congressmanSessions
-  }
-  Presidents: AssemblyCongressmen(assembly: $assembly, type: PRESIDENT) {
-    ...congressmanSessions
-  }
+    Primaries: AssemblyCongressmen(assembly: $assembly, type: PRIMARY) {
+        ...congressmanSessions
+    }
+    Substitutes: AssemblyCongressmen(assembly: $assembly, type: SUBSTITUTE) {
+        ...congressmanSessions
+    }
+    Presidents: AssemblyCongressmen(assembly: $assembly, type: PRESIDENT) {
+        ...congressmanSessions
+    }
 }
 
-
 fragment congressmanSessions on CongressmanSessions {
-  person { id name }
-  assembly { id from to }
-  sessions {
-      id
-    from
-    to
-    abbr
-    type
-    constituency { id name }
-    party { id name color }
-  }
+    id
+    person { id name }
+    assembly { id from to }
+    sessions {
+        id
+        from
+        to
+        abbr
+        type
+        constituency { id name }
+        party { id name color }
+    }
 }
 `;
 

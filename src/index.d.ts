@@ -139,3 +139,12 @@ export interface ConstituencySessionsType {
     assembly: AssemblyType
     sessions: CongressmanSessionsType[]
 }
+export interface PartySessionsType {
+    id: number
+    name: string
+    abbrShort: string
+    abbrLong: Maybe<string>
+    color: Maybe<string>
+    assembly: AssemblyType
+    sessions: CongressmanSessionsType[]
+}

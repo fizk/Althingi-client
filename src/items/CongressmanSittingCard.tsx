@@ -53,7 +53,7 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
             <div className="congressman-sitting-card__content">
                 <ul>
                     {parties.map(party => (
-                        <li className="congressman-sitting-card__subtitle">
+                        <li key={party.id} className="congressman-sitting-card__subtitle">
                             <Link key={party?.id} to={`/loggjafarthing/${assembly.id}/thingflokkar/${party.id}`}>
                                 <svg width="16" height="16" viewBox="0 0 16 16">
                                     <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
@@ -64,7 +64,7 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
                 </ul>
                 <ul>
                     {constituencies.map(constituency => (
-                        <li className="congressman-sitting-card__subtitle">
+                        <li key={constituency.id} className="congressman-sitting-card__subtitle">
                             <Link key={constituency?.id} to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency?.id}`}>
                                 {constituency?.name}
                             </Link>
