@@ -129,3 +129,13 @@ export interface CongressmanSessionsType {
     sessions: SessionType[]
     assembly: AssemblyType
 }
+
+export interface ConstituencySessionsType {
+    id: number
+    name: string
+    abbrShort: string
+    abbrLong: Maybe<string>
+    description: string
+    assembly: AssemblyType
+    sessions: CongressmanSessionsType[]
+}

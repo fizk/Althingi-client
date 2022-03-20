@@ -21,6 +21,9 @@ interface Props {
 export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, assembly, person }) => {
 
     const parties = sessions.reduce<PartyType[]>((previous, current) => {
+        if (current.party?.id === undefined) {
+            return previous;
+        }
         if (previous.find(party => party?.id === current.party?.id)) {
             return previous;
         }
@@ -28,6 +31,9 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
     }, []);
 
     const constituencies = sessions.reduce<ConstituencyType[]>((previous, current) => {
+        if (current.constituency?.id === undefined) {
+            return previous;
+        }
         if (previous.find(constituency => constituency?.id === current.constituency?.id)) {
             return previous;
         }
@@ -59,7 +65,7 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
                 <ul>
                     {constituencies.map(constituency => (
                         <li className="congressman-sitting-card__subtitle">
-                            <Link key={constituency?.id} to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency.id}`}>
+                            <Link key={constituency?.id} to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency?.id}`}>
                                 {constituency?.name}
                             </Link>
                         </li>

@@ -10,7 +10,6 @@ services:
       dockerfile: Dockerfile
     volumes:
       - ./dist:/usr/local/apache2/htdocs/
-    #   - /etc/letsencrypt/:/etc/letsencrypt/
     depends_on:
       - server
       - thumbor

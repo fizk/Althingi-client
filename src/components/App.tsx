@@ -9,6 +9,8 @@ import { AssemblyIssues } from './AssemblyIssues';
 import { AssemblyIssueDocuments } from './AssemblyIssueDocuments';
 import { AssemblyIssueSpeeches } from './AssemblyIssueSpeeches';
 import { AssemblyIssue } from './AssemblyIssue';
+import { AssemblyConstituencies } from './AssemblyConstituencies';
+import { AssemblySessions } from './AssemblySessions';
 import { AssemblyCongressmen } from './AssemblyCongressmen';
 import { AssemblyCongressman } from './AssemblyCongressman';
 import { AssemblyCongressmanCurrent } from './AssemblyCongressmanCurrent';
@@ -51,7 +53,11 @@ export const App: FunctionComponent = () => {
                         <Route path="" element={<AssemblyIssueSpeeches />} />
                         <Route path="skjol" element={<AssemblyIssueDocuments />} />
                     </Route>
-                    <Route path="thingmenn" element={<AssemblyCongressmen />} />
+
+                    <Route path="thingseta" element={<AssemblySessions />} >
+                        <Route path="" element={<AssemblyCongressmen />} />
+                        <Route path="kjordaemi" element={<AssemblyConstituencies />} />
+                    </Route>
                     <Route path="thingmenn/:congressman_id" element={<AssemblyCongressman />} >
                         <Route path="" element={<AssemblyCongressmanCurrent />} />
                         <Route path="oll" element={<AssemblyCongressmanAll />} />

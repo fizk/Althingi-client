@@ -52,9 +52,9 @@ export const Assembly = () => {
                         </NavLink>
                         </li>
                     <li>
-                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmenn`}
+                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingseta`}
                             style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                            Þingmenn
+                            Þingseta
                         </NavLink>
                     </li>
                 </ul>
