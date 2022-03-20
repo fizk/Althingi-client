@@ -3,6 +3,7 @@ import { gql, useQuery } from "@apollo/client";
 import { NavLink, Outlet, useParams } from "react-router-dom";
 import type { AssemblyType } from '../index.d';
 import { Spinner } from "../items/Spinner";
+import './Assembly.css';
 
 const ASSEMBLY_QUERT = gql`
   query assembly ($assembly: ID!) {
@@ -10,15 +11,20 @@ const ASSEMBLY_QUERT = gql`
     id
     from
     to
+    parties {
+        id
+        name
+        color
+    }
   }
 }
 `;
 
 export const Assembly = () => {
-    const params = useParams();
+    const { assembly_id } = useParams();
     const { loading, error, data } = useQuery<{ Assembly: AssemblyType }>(
         ASSEMBLY_QUERT,
-        { variables: { assembly: params.assembly_id } }
+        { variables: { assembly: assembly_id } }
     );
 
     if (loading) return <Spinner />;
@@ -26,10 +32,21 @@ export const Assembly = () => {
 
     return (
         <>
-            <header>
-                <h2>{data?.Assembly.id}</h2>
+            <header className="assembly__header">
+                <h2>{data?.Assembly.id}. Löggjafarþing</h2>
                 <time>{data?.Assembly.from}</time>
                 <time>{data?.Assembly.to}</time>
+                <h3>Flokkar á þingi</h3>
+                <ul>
+                    {data?.Assembly.parties.map(party => (
+                        <li key={party.id}>
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                                <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
+                            </svg>
+                            {party.name}
+                        </li>
+                    ))}
+                </ul>
             </header>
             <nav>
                 <ul>

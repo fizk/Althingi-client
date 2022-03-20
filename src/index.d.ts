@@ -5,6 +5,7 @@ export interface AssemblyType {
     id: number
     from: string
     to: Maybe<string>
+    parties: PartyType[]
 }
 
 export interface PartyType {
