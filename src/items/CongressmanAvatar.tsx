@@ -7,12 +7,19 @@ import './CongressmanAvatar.css';
 interface Props {
     congressman: PersonType
     party?: PartyType
+    size?: 'sm' | 'md' | 'lg'
 }
 
-export const CongressmanAvatar: FunctionComponent<Props> = ({ congressman, party }) => {
+
+export const CongressmanAvatar: FunctionComponent<Props> = ({ congressman, party, size = 'md' }) => {
+    const sizeMap = {
+        'sm': 37,
+        'md': 91,
+        'lg': 143,
+    }
     return (
-        <div className="congressman-avatar">
-            <img width={80} height={80}
+        <div className={classVariants('congressman-avatar', [size])}>
+            <img width={sizeMap[size]} height={sizeMap[size]}
                 alt={congressman.name}
                 loading="lazy"
                 className={classVariants('congressman-avatar__image', party ? ['cutout'] : ['oval'])}

@@ -14,14 +14,16 @@ module.exports = {
       },
       {
         test: /\.css$/i,
-        use: [MiniCssExtractPlugin.loader, {
-            loader: "css-loader",
+        use: [MiniCssExtractPlugin.loader, "css-loader", {
+            // loader: "css-loader",
+            loader: 'postcss-loader',
             options: {
-                // modules: true,
-                // importLoaders: 1,
-                // localIdentName: "[name]_[local]_[hash:base64]",
-                // sourceMap: true,
-                // minimize: true
+                postcssOptions: {
+
+                    plugins: [
+                        { "postcss-nested": { preserveEmpty: true } },
+                    ]
+                },
             }
         }],
     },

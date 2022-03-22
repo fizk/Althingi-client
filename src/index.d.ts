@@ -1,5 +1,6 @@
 export type Maybe<T> = null | undefined | T;
 export type IssueCategory = 'a' | 'b';
+export type LayoutType = 'grid' | 'list';
 
 export interface AssemblyType {
     id: number

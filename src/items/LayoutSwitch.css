@@ -1,0 +1,13 @@
+.layout-switch {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.layout-switch--active {
+    color: currentColor;
+}
+.layout-switch--disable {
+    color: var(--color-mid);
+}

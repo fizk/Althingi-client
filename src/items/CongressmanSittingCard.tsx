@@ -3,6 +3,7 @@ import type { FunctionComponent } from "react";
 import { CongressmanAvatar } from "./CongressmanAvatar";
 import { Link } from "react-router-dom";
 import { Timeline } from "./Timeline";
+import { classVariants } from "../utils/classVariants";
 import type {
     AssemblyType,
     SessionType,
@@ -16,9 +17,10 @@ interface Props {
     sessions: SessionType[]
     assembly: AssemblyType
     person: PersonType
+    variation?: 'vertical' | 'horizontal'
 }
 
-export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, assembly, person }) => {
+export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, assembly, person, variation = 'vertical' }) => {
 
     const parties = sessions.reduce<PartyType[]>((previous, current) => {
         if (current.party?.id === undefined) {
@@ -41,9 +43,9 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
     }, []);
 
     return (
-        <section className="congressman-sitting-card">
+        <section className={classVariants('congressman-sitting-card', variation === 'vertical' ? ['vertical'] : ['horizontal'])}>
             <aside className="congressman-sitting-card__avatar">
-                <CongressmanAvatar congressman={person} />
+                <CongressmanAvatar congressman={person} size={variation === 'horizontal' ? 'sm' : 'md'} />
             </aside>
             <header className="congressman-sitting-card__header">
                 <Link to={`/loggjafarthing/${assembly.id}/thingmenn/${person.id}`}>

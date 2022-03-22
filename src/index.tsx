@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { App } from "./components/App";
+import { LayoutContextProvier } from "./context/LayoutContext";
 import { BrowserRouter } from "react-router-dom";
 import {
     ApolloClient,
@@ -16,7 +17,9 @@ const client = new ApolloClient({
 ReactDOM.render(
     <BrowserRouter>
     <ApolloProvider client={client}>
-        <App />
+        <LayoutContextProvier>
+            <App />
+        </LayoutContextProvier>
     </ApolloProvider>
     </BrowserRouter>,
     document.querySelector('[data-react]')

@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
 import { gql, useQuery } from "@apollo/client";
+import { LayoutContext } from "../context/LayoutContext";
 import { useParams } from "react-router-dom";
 import { Spinner } from "../items/Spinner";
 import { Card } from "../items/Card";
 import { CongressmanSittingCard } from "../items/CongressmanSittingCard";
+import { classVariants } from '../utils/classVariants';
+import { LayoutSwitch } from '../items/LayoutSwitch';
 import type { CongressmanSessionsType } from "../index.d";
 import './AssemblyCongressmen.css';
 
@@ -39,10 +42,11 @@ fragment congressmanSessions on CongressmanSessions {
 
 export function AssemblyCongressmen () {
     const { assembly_id } = useParams();
+    const { layout } = useContext(LayoutContext);
     const { loading, error, data } = useQuery<{
-        Primaries: Array<CongressmanSessionsType> ,
-        Substitutes: Array<CongressmanSessionsType> ,
-        Presidents: Array<CongressmanSessionsType> ,
+        Primaries: Array<CongressmanSessionsType>,
+        Substitutes: Array<CongressmanSessionsType>,
+        Presidents: Array<CongressmanSessionsType>,
     }>(
         ASSEMBLY_CONGRESSMEN_QUERY,
         {variables: {assembly: assembly_id}}
@@ -53,13 +57,15 @@ export function AssemblyCongressmen () {
 
     return (
         <>
+            <LayoutSwitch />
             <section className="assembly-congressmen__section">
-                <h3>Primaries</h3>
-                <ul className="assembly-congressmen__list">
+                <h3>Þingmenn</h3>
+                <ul className={classVariants('assembly-congressmen__list', layout === 'list' ? ['list'] : ['grid'])}>
                     {data?.Primaries.map(({id, assembly, person, sessions}) => (
                         <li key={id} className="assembly-congressmen__list-item">
                             <Card>
                                 <CongressmanSittingCard
+                                    variation={layout === 'grid' ? 'vertical' : 'horizontal'}
                                     person={person}
                                     sessions={sessions}
                                     assembly={assembly} />
@@ -67,12 +73,13 @@ export function AssemblyCongressmen () {
                         </li>
                     ))}
                 </ul>
-                <h3>Substitutes</h3>
-                <ul className="assembly-congressmen__list">
+                <h3>Varamenn</h3>
+                <ul className={classVariants('assembly-congressmen__list', layout === 'list' ? ['list'] : ['grid'])}>
                     {data?.Substitutes.map(({id, assembly, person, sessions}) => (
                         <li key={id} className="assembly-congressmen__list-item">
                             <Card>
                                 <CongressmanSittingCard
+                                    variation={layout === 'grid' ? 'vertical' : 'horizontal'}
                                     person={person}
                                     sessions={sessions}
                                     assembly={assembly} />

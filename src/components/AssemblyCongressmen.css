@@ -20,10 +20,19 @@
 .assembly-congressmen__section {}
 
 .assembly-congressmen__list {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(var(--size-min-card), 1fr));
     list-style: none;
     padding: 0;
+}
+
+.assembly-congressmen__list--grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--size-min-card), 1fr));
+    gap: var(--space-md);
+}
+
+.assembly-congressmen__list--list {
+    display: grid;
+    grid-template-columns: 1fr;
     gap: var(--space-md);
 }
 
