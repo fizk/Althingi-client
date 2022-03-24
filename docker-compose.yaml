@@ -19,6 +19,8 @@ services:
 
   server:
     image: dev-server
+    environment:
+      STORE_URL: http://${DOCKER_GATEWAY_HOST:-host.docker.internal}:8083
 
   test:
     container_name: local-althingi-client-test

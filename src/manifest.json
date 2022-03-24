@@ -1,10 +1,13 @@
 {
   "$schema": "https://json.schemastore.org/web-manifest-combined.json",
   "name": "Löggjafarþing",
+  "lang": "is",
   "short_name": "Löggjafarþing",
   "start_url": ".",
   "display": "standalone",
+  "theme_color": "#fff",
   "background_color": "#fff",
+  "orientation": "portrait-primary",
   "description": "Althingi.is, bara betra",
   "icons": [{
     "src": "images/touch/homescreen48.png",

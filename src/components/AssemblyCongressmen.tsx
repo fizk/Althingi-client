@@ -19,9 +19,6 @@ query AssemblyCongressmen($assembly: ID!) {
     Substitutes: AssemblyCongressmen(assembly: $assembly, type: SUBSTITUTE) {
         ...congressmanSessions
     }
-    Presidents: AssemblyCongressmen(assembly: $assembly, type: PRESIDENT) {
-        ...congressmanSessions
-    }
 }
 
 fragment congressmanSessions on CongressmanSessions {
@@ -46,7 +43,6 @@ export function AssemblyCongressmen () {
     const { loading, error, data } = useQuery<{
         Primaries: Array<CongressmanSessionsType>,
         Substitutes: Array<CongressmanSessionsType>,
-        Presidents: Array<CongressmanSessionsType>,
     }>(
         ASSEMBLY_CONGRESSMEN_QUERY,
         {variables: {assembly: assembly_id}}
