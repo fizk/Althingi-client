@@ -2,6 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
+const crypto = require('crypto')
 
 module.exports = {
   entry: './src/index.tsx',
@@ -45,8 +46,10 @@ module.exports = {
         new MiniCssExtractPlugin(),
         new HtmlWebpackPlugin({
           template: 'src/index.html',
-          publicPath: '/',
-          scriptLoading: "defer",
+          inject: false,
+          templateParameters: {
+              hash: (source) => crypto.createHash('md5').update(source).digest("hex")
+          }
         })
     ],
   mode: 'development',

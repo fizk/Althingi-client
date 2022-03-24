@@ -9,6 +9,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" media="screen" rel="stylesheet">
+    <!--script defer src="/bundle.js?<%= hash(compilation.assets['bundle.js'].source()) %>"></script-->
+    <!--link defer href="/main.css?<%= hash(compilation.assets['main.css'].source()) %>" rel="stylesheet"-->
+    <script defer src="/bundle.js"></script>
+    <link defer href="/main.css" rel="stylesheet">
     <style>
         :root {
             --font-xl: 1.563rem;
@@ -66,7 +70,12 @@
 </head>
 
 <body>
-    <div data-react></div>
+    <div data-react>
+        <svg class="spinner" viewBox="0 0 50 50">
+            <circle class="spinner__path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
+        </svg>
+    </div>
 </body>
+
 
 </html>
