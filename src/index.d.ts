@@ -7,6 +7,7 @@ export interface AssemblyType {
     from: string
     to: Maybe<string>
     parties: PartyType[]
+    governmentParties: PartyType[]
 }
 
 export interface PartyType {
@@ -149,4 +150,33 @@ export interface PartySessionsType {
     color: Maybe<string>
     assembly: AssemblyType
     sessions: CongressmanSessionsType[]
+}
+
+export interface GovernmentSession {
+    id: number,
+    name: string
+    abbrShort: string
+    abbrLong: string,
+    first: AssemblyType,
+    last: AssemblyType,
+    congressmen: MinistrySession[],
+}
+
+export interface MinistrySession {
+    id: number,
+    assembly: AssemblyType,
+    person: PersonType,
+    party: PartyType,
+    constituency: ConstituencyType,
+    ministry: MinistryType,
+    from: string,
+    to: string,
+}
+
+export interface MinistryType {
+    id: number,
+    from: string,
+    name: string,
+    abbrLong: string,
+    abbrShort: string,
 }

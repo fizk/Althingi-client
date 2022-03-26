@@ -1,0 +1,19 @@
+.government-timeline {
+    width: 100%;
+    color: var(--color-default-timeline);
+}
+
+.government-timeline__legent {
+    font-size: var(--font-sm);
+    fill: var(--color-text)
+}
+.government-timeline__bar {
+    fill: currentColor;
+}
+.government-timeline__tick-marker {
+    color: var(--color-default-timeline);
+}
+.government-timeline__tick-label {
+    fill: var(--color-text);
+    font-size: var(--font-sm);
+}

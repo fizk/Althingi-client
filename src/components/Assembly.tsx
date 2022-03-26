@@ -16,6 +16,11 @@ const ASSEMBLY_QUERT = gql`
         name
         color
     }
+    governmentParties {
+      id
+      name
+      color
+    }
   }
 }
 `;
@@ -39,6 +44,17 @@ export const Assembly = () => {
                 <h3>Flokkar á þingi</h3>
                 <ul>
                     {data?.Assembly.parties.map(party => (
+                        <li key={party.id}>
+                            <svg width="16" height="16" viewBox="0 0 16 16">
+                                <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
+                            </svg>
+                            {party.name}
+                        </li>
+                    ))}
+                </ul>
+                <h3>Stjórnarflokkar</h3>
+                <ul>
+                    {data?.Assembly.governmentParties.map(party => (
                         <li key={party.id}>
                             <svg width="16" height="16" viewBox="0 0 16 16">
                                 <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
