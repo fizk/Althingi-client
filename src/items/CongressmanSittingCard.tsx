@@ -1,9 +1,11 @@
 import React from "react";
 import type { FunctionComponent } from "react";
-import { CongressmanAvatar } from "./CongressmanAvatar";
-import { Link } from "react-router-dom";
 import { Timeline } from "./Timeline";
+import { Link } from "react-router-dom";
+import { CongressmanAvatar } from "./CongressmanAvatar";
 import { classVariants } from "../utils/classVariants";
+import { PartyBadge } from "../items/PartyBadge";
+import { ConstituencyBadge } from "../items/ConstituencyBadge";
 import type {
     AssemblyType,
     SessionType,
@@ -53,22 +55,20 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
                 </Link>
             </header>
             <div className="congressman-sitting-card__content">
-                <ul>
+                <ul className="congressman-sitting-card__list">
                     {parties.map(party => (
                         <li key={party.id} className="congressman-sitting-card__subtitle">
                             <Link key={party?.id} to={`/loggjafarthing/${assembly.id}/thingflokkar/${party.id}`}>
-                                <svg width="16" height="16" viewBox="0 0 16 16">
-                                    <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
-                                </svg>{party?.name}
+                                <PartyBadge party={party} />
                             </Link>
                         </li>
                     ))}
                 </ul>
-                <ul>
+                <ul className="congressman-sitting-card__list">
                     {constituencies.map(constituency => (
                         <li key={constituency.id} className="congressman-sitting-card__subtitle">
                             <Link key={constituency?.id} to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency?.id}`}>
-                                {constituency?.name}
+                                <ConstituencyBadge constituency={constituency} />
                             </Link>
                         </li>
                     ))}

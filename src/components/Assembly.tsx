@@ -1,8 +1,14 @@
 import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { NavLink, Outlet, useParams } from "react-router-dom";
-import type { AssemblyType } from '../index.d';
 import { Spinner } from "../items/Spinner";
+import { DateDisplay } from "../items/DateDisplay";
+import { PartyBadge } from "../items/PartyBadge";
+import { List } from "../icons/List";
+import { OpenBook } from "../icons/OpenBook";
+import { User } from "../icons/User";
+import { Watch } from "../icons/Watch";
+import type { AssemblyType } from '../index.d';
 import './Assembly.css';
 
 const ASSEMBLY_QUERT = gql`
@@ -38,61 +44,81 @@ export const Assembly = () => {
     return (
         <>
             <header className="assembly__header">
-                <h2>{data?.Assembly.id}. Löggjafarþing</h2>
-                <time>{data?.Assembly.from}</time>
-                <time>{data?.Assembly.to}</time>
-                <h3>Flokkar á þingi</h3>
-                <ul>
-                    {data?.Assembly.parties.map(party => (
-                        <li key={party.id}>
-                            <svg width="16" height="16" viewBox="0 0 16 16">
-                                <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
-                            </svg>
-                            {party.name}
+                <div className="assembly__properties">
+                    <h2 className="assembly__header-title">{data?.Assembly.id}. Löggjafarþing</h2>
+                    <ul>
+                        <li>
+                            <DateDisplay date={new Date(data?.Assembly?.from!)} />
                         </li>
-                    ))}
-                </ul>
-                <h3>Stjórnarflokkar</h3>
-                <ul>
-                    {data?.Assembly.governmentParties.map(party => (
-                        <li key={party.id}>
-                            <svg width="16" height="16" viewBox="0 0 16 16">
-                                <circle cy="8" cx="8" r="8" fill={party.color || 'gray'} />
-                            </svg>
-                            {party.name}
-                        </li>
-                    ))}
-                </ul>
+                        {data?.Assembly.to && (<li>
+                            <DateDisplay date={new Date(data?.Assembly?.to!)} />
+                        </li>)}
+                    </ul>
+                </div>
+                <div className="assembly__parties-card">
+                    <h3 className="assembly__header-subtitle">Flokkar á þingi</h3>
+                    <ul>
+                        {data?.Assembly.parties.map(party => (
+                            <li key={party.id}>
+                                <PartyBadge party={party} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+                <div className="assembly__parties-card">
+                    <h3 className="assembly__header-subtitle">Stjórnarflokkar</h3>
+                    <ul>
+                        {data?.Assembly.governmentParties.map(party => (
+                            <li key={party.id}>
+                                <PartyBadge party={party} />
+                            </li>
+                        ))}
+                    </ul>
+                </div>
             </header>
-            <nav>
-                <ul>
-                    <li>
+            <nav className="assembly__navigation">
+                <ul className="assembly__navigation-list">
+                    <li className="assembly__navigation-list-item">
                         <NavLink to={`/loggjafarthing/${data?.Assembly.id}`}
                             style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}} end>
-                            Samantekt
-                        </NavLink>
-                        </li>
-                    <li>
-                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmal`}
-                            style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                            Þingmál
+                            <span className="assembly__navigation-list-group">
+                                    <OpenBook />
+                                    Samantekt
+                                </span>
                         </NavLink>
                     </li>
-                    <li>
+                    <li className="assembly__navigation-list-item">
+                        <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingmal`}
+                            style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
+                            <span className="assembly__navigation-list-group">
+                                <List />
+                                Þingmál
+                            </span>
+                        </NavLink>
+                    </li>
+                    <li className="assembly__navigation-list-item">
                         <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingfundir`}
                             style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                            Þingfundir
+                            <span className="assembly__navigation-list-group">
+                                <Watch />
+                                Þingfundir
+                            </span>
                         </NavLink>
-                        </li>
-                    <li>
+                    </li>
+                    <li className="assembly__navigation-list-item">
                         <NavLink to={`/loggjafarthing/${data?.Assembly.id}/thingseta`}
                             style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                            Þingseta
+                            <span className="assembly__navigation-list-group">
+                                <User />
+                                Þingseta
+                            </span>
                         </NavLink>
                     </li>
                 </ul>
             </nav>
-            <Outlet />
+            <div className="assembly__content">
+                <Outlet />
+            </div>
         </>
     )
 

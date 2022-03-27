@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Grid = () => (
+export const Search = () => (
     <svg fill="none"
         height="24"
         stroke="currentColor"
@@ -10,9 +10,8 @@ export const Grid = () => (
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg">
-        <rect height="7" width="7" x="3" y="3" />
-        <rect height="7" width="7" x="14" y="3" />
-        <rect height="7" width="7" x="14" y="14" />
-        <rect height="7" width="7" x="3" y="14" />
+        <circle cx="11" cy="11" r="8" />
+        <line x1="21" x2="16.65" y1="21" y2="16.65" />
     </svg>
 )
+

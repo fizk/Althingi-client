@@ -1,0 +1,9 @@
+.constituency-badge {
+    display: inline-flex;
+    gap: var(--space-xs);
+    align-items: center;
+}
+
+.constituency-badge__marker {
+
+}

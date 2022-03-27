@@ -6,6 +6,7 @@ import { Spinner } from "../items/Spinner";
 import { CongressmanSittingCard } from "../items/CongressmanSittingCard";
 import { Card } from "../items/Card";
 import { LayoutSwitch } from '../items/LayoutSwitch';
+import { Search } from "../icons/Search";
 import type { ConstituencySessionsType } from '../index.d';
 import './AssemblyConstituencies.css';
 
@@ -48,12 +49,18 @@ export const AssemblyConstituencies = () => {
 
     return (
         <>
-            <LayoutSwitch />
+            <div className="assembly-constituencies__controls">
+                <LayoutSwitch>
+                    <button className="assembly-constituencies__search">
+                        <Search />
+                    </button>
+                </LayoutSwitch>
+            </div>
             <ul className="assembly-constituencies__list">
                 {data?.AssemblyConstituencies.map((constituency, i) => (
                     <li key={i}>
-                        <h3>{constituency.name}</h3>
-                        <p>{constituency.description}</p>
+                        <h3>{constituency.name} ({constituency.sessions.length})</h3>
+                        <p className="assembly-constituencies__description">{constituency.description}</p>
                         <ul className="assembly-constituencies__congressmen">
                             {constituency.sessions.map((session, i) => (
                                 <li key={i}>

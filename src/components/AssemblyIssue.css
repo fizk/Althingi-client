@@ -24,16 +24,3 @@
 .assembly-issue__content {
 
 }
-
-.assembly-issue__navigation {
-
-}
-.assembly-issue__navigation-list {
-    display: flex;
-    list-style: none;
-    gap: var(--space-md);
-    padding: 0;
-}
-.assembly-issue__navigation-list-item {
-
-}

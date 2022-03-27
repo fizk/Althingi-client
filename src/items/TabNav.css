@@ -1,0 +1,21 @@
+.tab-nav {
+    border-bottom: 1px solid #e1e1e1;
+}
+.tab-nav__list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-md);
+    margin: 0;
+    padding: 0;
+}
+.tab-nav__item {}
+.tab-nav__link {
+    display: inline-block;
+    padding: 16px 0;
+    color: var(--color-text);
+}
+
+.tab-nav__link--active {
+    border-bottom: 4px solid #e1e1e1;
+    font-weight: var(--font-weight-bold);
+}

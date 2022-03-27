@@ -54,7 +54,6 @@ export const App: FunctionComponent = () => {
                         <Route path="" element={<AssemblyIssueSpeeches />} />
                         <Route path="skjol" element={<AssemblyIssueDocuments />} />
                     </Route>
-
                     <Route path="thingseta" element={<AssemblySessions />} >
                         <Route path="" element={<AssemblyCongressmen />} />
                         <Route path="kjordaemi" element={<AssemblyConstituencies />} />

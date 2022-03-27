@@ -1,5 +1,12 @@
 .assembly-parties__list {
+    list-style: none;
     padding: 0;
+}
+
+.assembly-parties__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
 }
 
 .assembly-parties__congressmen {
@@ -8,4 +15,17 @@
     list-style: none;
     gap: var(--space-md);
     padding: 0;
+}
+
+.assembly-parties__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+}
+.assembly-parties__search {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
 }

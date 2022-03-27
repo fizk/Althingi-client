@@ -2,6 +2,8 @@ import React from "react";
 import { gql, useQuery } from "@apollo/client";
 import { Link } from "react-router-dom";
 import { Spinner } from '../items/Spinner';
+import { DateDisplay } from '../items/DateDisplay';
+import { PartyBadge } from '../items/PartyBadge';
 import type { AssemblyType } from '../index.d';
 
 const ASSEMBLIES_QUERY = gql`
@@ -10,6 +12,9 @@ query assemblies {
     id
     from
     to
+    governmentParties {
+      id name color
+    }
   }
 }
 `;
@@ -28,7 +33,17 @@ export const Assemblies = () => {
                 <li key={assembly.id}>
                     <Link to={`/loggjafarthing/${assembly.id}`}>
                         <h3>{assembly.id}</h3>
-                        <time>{assembly.from}</time> - <time>{assembly.to}</time>
+                        <ul>
+                            <li><DateDisplay date={new Date(assembly.from)} /></li>
+                            {assembly.to && <li><DateDisplay date={new Date(assembly.to)} /></li>}
+                        </ul>
+                        <ul>
+                            {assembly.governmentParties.map(party => (
+                                <li>
+                                    <PartyBadge party={party} />
+                                </li>
+                            ))}
+                        </ul>
                     </Link>
                 </li>
             ))}

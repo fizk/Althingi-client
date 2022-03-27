@@ -19,6 +19,13 @@
 
 .assembly-congressmen__section {}
 
+.assembly-congressmen__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+}
+
 .assembly-congressmen__list {
     list-style: none;
     padding: 0;
@@ -38,4 +45,11 @@
 
 .assembly-congressmen__list-item {
 
+}
+
+.assembly-congressmen__search {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
 }

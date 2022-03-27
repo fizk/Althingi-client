@@ -1,5 +1,9 @@
 .assembly-constituencies__list {
+    list-style: none;
     padding: 0;
+}
+.assembly-constituencies__description {
+    max-width: 50%;
 }
 
 .assembly-constituencies__congressmen {
@@ -8,4 +12,17 @@
     list-style: none;
     gap: var(--space-md);
     padding: 0;
+}
+
+.assembly-constituencies__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+}
+.assembly-constituencies__search {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
 }

@@ -6,6 +6,7 @@ import { Spinner } from "../items/Spinner";
 import { CongressmanSittingCard } from "../items/CongressmanSittingCard";
 import { Card } from "../items/Card";
 import { LayoutSwitch } from '../items/LayoutSwitch';
+import { Search } from "../icons/Search";
 import type { PartySessionsType } from '../index.d';
 import './AssemblyParties.css';
 
@@ -69,11 +70,17 @@ export const AssemblyParties = () => {
 
     return (
         <>
-            <LayoutSwitch />
+            <div className="assembly-parties__controls">
+                <LayoutSwitch>
+                    <button className="assembly-parties__search">
+                        <Search />
+                    </button>
+                </LayoutSwitch>
+            </div>
             <ul className="assembly-parties__list">
                 {data?.AssemblyParties.map(party => (
-                    <li key={party.id}>
-                        <h3>
+                    <li key={party.id} className="assembly-parties__list-item">
+                        <h3 className="assembly-parties__title">
                             <svg viewBox="0 0 32 32" width={32} height={32}>
                                 <circle cy={16} cx={16} r={16} fill={party.color || 'gray'} />
                             </svg>

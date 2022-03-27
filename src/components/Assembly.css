@@ -1,5 +1,50 @@
 .assembly__header {
-    background-color: var(--color-white);
-    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+    padding: var(--space-lg);
+    grid-column: 2 / span 1;
+    grid-row: 1 / span 1;
+    display: flex;
+    justify-content: space-between;
+}
+.assembly__properties {
+    color: var(--color-white);
+    background-color: var(--color-text);
     padding: var(--space-md);
+    box-shadow: rgb(149 157 165 / 20%) 0px 8px 24px;
+}
+.assembly__parties-card {}
+.assembly__header-title {
+    font-size: var(--font-xl);
+    font-weight: var(--font-weight-bold);
+}
+.assembly__header-subtitle {
+    font-size: var(--font-md);
+    font-weight: var(--font-weight-bold);
+}
+.assembly__navigation {
+    background-color: var(--color-light);
+    grid-column: 1 / span 1;
+    grid-row: 1 / span 2;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    /* @todo make a css property */
+    border-right: 1px solid #e1e1e1;
+}
+.assembly__content {
+    grid-column: 2 / span 1;
+    grid-row: 2 / span 1;
+    padding: var(--space-lg);
+}
+
+.assembly__navigation-list {
+    list-style: none;
+    padding: 0;
+}
+.assembly__navigation-list-item {
+    margin: var(--space-lg) 0;
+}
+.assembly__navigation-list-group {
+    display: flex;
+    gap: var(--space-md);
+    align-items: center;
 }

@@ -1,8 +1,9 @@
 import { gql, useQuery } from "@apollo/client";
 import React from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
+import { Outlet, useParams } from "react-router-dom";
 import { IssueType } from "../index.d";
 import { Spinner } from "../items/Spinner";
+import { TabNav, TabNavItem, TabNavStaticItem } from "../items/TabNav";
 import './AssemblyIssue.css';
 
 const ASSEMBLY_ISSUE_QUERY = gql`
@@ -43,33 +44,23 @@ export function AssemblyIssue() {
                 </dl>
             </header>
             <div className="assembly-issue__content">
-                <nav className="assembly-issue__navigation">
+                <TabNav title="Aukaefni">
                     {data?.AssemblyIssue.category.toLowerCase() === 'a' && (
-                        <ul className="assembly-issue__navigation-list">
-                            <li className="assembly-issue__navigation-list-item">
-                                <NavLink to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}`}
-                                    end
-                                    style={({ isActive }) => isActive ? { textDecoration: 'underline'} : {}}>
-                                    ræður
-                                </NavLink>
-                            </li>
-                            <li className="assembly-issue__navigation-list-item">
-                                <NavLink to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}/skjol`}
-                                    end
-                                    style={({ isActive }) => isActive ? { textDecoration: 'underline' } : {}}>
-                                    skjöl
-                                </NavLink>
-                            </li>
-                        </ul>
+                        <>
+                            <TabNavItem to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}`}>
+                                ræður
+                            </TabNavItem>
+                            <TabNavItem to={`/loggjafarthing/${assembly_id}/thingmal/${category}/${issue_id}/skjol`}>
+                                skjöl
+                            </TabNavItem>
+                        </>
                     )}
                     {data?.AssemblyIssue.category.toLowerCase() === 'b' && (
-                        <ul style={{ display: 'flex', listStyle: 'none' }}>
-                            <li className="assembly-issue__navigation-list-item">
-                                rædur
-                            </li>
-                        </ul>
+                        <TabNavStaticItem>
+                            rædur
+                        </TabNavStaticItem>
                     )}
-                </nav>
+                </TabNav>
                 <Outlet />
             </div>
         </section>

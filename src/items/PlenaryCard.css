@@ -1,10 +1,10 @@
 .plenary-title {
-    font-weight: 400;
+    font-weight: var(--font-weight-bold);
     font-size: var(--font-md);
     margin: 0;
 }
 .plenary-subtitle {
-    font-weight: 300;
+    font-weight: var(--font-weight-thin);
     font-size: var(--font-sm);
     margin: 0;
 }

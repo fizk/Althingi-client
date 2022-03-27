@@ -7,6 +7,7 @@ import { Card } from "../items/Card";
 import { CongressmanSittingCard } from "../items/CongressmanSittingCard";
 import { classVariants } from '../utils/classVariants';
 import { LayoutSwitch } from '../items/LayoutSwitch';
+import { Search } from '../icons/Search';
 import type { CongressmanSessionsType } from "../index.d";
 import './AssemblyCongressmen.css';
 
@@ -53,9 +54,15 @@ export function AssemblyCongressmen () {
 
     return (
         <>
-            <LayoutSwitch />
+            <div className="assembly-congressmen__controls">
+                <LayoutSwitch>
+                    <button className="assembly-congressmen__search">
+                        <Search />
+                    </button>
+                </LayoutSwitch>
+            </div>
             <section className="assembly-congressmen__section">
-                <h3>Þingmenn</h3>
+                <h3>Þingmenn ({data?.Primaries.length})</h3>
                 <ul className={classVariants('assembly-congressmen__list', layout === 'list' ? ['list'] : ['grid'])}>
                     {data?.Primaries.map(({id, assembly, person, sessions}) => (
                         <li key={id} className="assembly-congressmen__list-item">
@@ -69,7 +76,7 @@ export function AssemblyCongressmen () {
                         </li>
                     ))}
                 </ul>
-                <h3>Varamenn</h3>
+                <h3>Varamenn ({data?.Substitutes.length})</h3>
                 <ul className={classVariants('assembly-congressmen__list', layout === 'list' ? ['list'] : ['grid'])}>
                     {data?.Substitutes.map(({id, assembly, person, sessions}) => (
                         <li key={id} className="assembly-congressmen__list-item">

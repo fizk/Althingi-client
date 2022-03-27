@@ -1,6 +1,6 @@
 import React from "react";
 
-export const Grid = () => (
+export const User = () => (
     <svg fill="none"
         height="24"
         stroke="currentColor"
@@ -10,9 +10,8 @@ export const Grid = () => (
         viewBox="0 0 24 24"
         width="24"
         xmlns="http://www.w3.org/2000/svg">
-        <rect height="7" width="7" x="3" y="3" />
-        <rect height="7" width="7" x="14" y="3" />
-        <rect height="7" width="7" x="14" y="14" />
-        <rect height="7" width="7" x="3" y="14" />
+        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" />
+        <circle cx="12" cy="7" r="4" />
     </svg>
 )
+

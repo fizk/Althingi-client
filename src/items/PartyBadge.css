@@ -1,0 +1,9 @@
+.party-badge {
+    display: inline-flex;
+    gap: var(--space-xs);
+    align-items: center;
+}
+
+.party-badge__marker {
+
+}
