@@ -123,7 +123,7 @@ export interface SessionType {
     from: string
     to: Maybe<string>
     abbr: Maybe<string>
-    type: 'með varamann' | 'þingmaður' | 'varamaður'
+    type: 'með varamann' | 'þingmaður' | 'varamaður' | string
 }
 
 export interface CongressmanSessionsType {
@@ -179,4 +179,10 @@ export interface MinistryType {
     name: string,
     abbrLong: string,
     abbrShort: string,
+}
+
+export interface InflationType {
+    id: number
+    date: string
+    value: number
 }

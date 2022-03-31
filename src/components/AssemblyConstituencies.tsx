@@ -29,7 +29,6 @@ query AssemblyConstituencies($assembly: ID!) {
         from
         to
         abbr
-        type
       }
     }
   }

@@ -12,9 +12,6 @@ query assemblies {
     id
     from
     to
-    governmentParties {
-      id name color
-    }
   }
 }
 `;
@@ -36,13 +33,6 @@ export const Assemblies = () => {
                         <ul>
                             <li><DateDisplay date={new Date(assembly.from)} /></li>
                             {assembly.to && <li><DateDisplay date={new Date(assembly.to)} /></li>}
-                        </ul>
-                        <ul>
-                            {assembly.governmentParties.map(party => (
-                                <li>
-                                    <PartyBadge party={party} />
-                                </li>
-                            ))}
                         </ul>
                     </Link>
                 </li>

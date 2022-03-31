@@ -5,37 +5,36 @@ import { Link, useParams } from "react-router-dom";
 import { Spinner } from '../items/Spinner';
 import { GovernmentTimeline } from '../items/GovernmentTimeline';
 
-import type { GovernmentSession } from '../index.d';
+import type { GovernmentSession, InflationType } from '../index.d';
+import { InflationTimeline } from "../items/InflationTimeline";
 
 const ASSEMBLIES_QUERY = gql`
 query assemblies ($assembly: ID!){
-  AssemblyGovernment (assembly: $assembly) {
-    id
-    name
-    congressmen {
-      id
-      person {
-        id
-        name
-      }
-      assembly {
-        to
-        from
-      }
-      party {
-        id
-        name
-      }
-      from
-      to
+    AssemblyInflation (assembly: $assembly) {
+        id date value
     }
-  }
+
+    AssemblyGovernment (assembly: $assembly) {
+        id
+        name
+        congressmen {
+            id
+            from
+            to
+            person { id name}
+            assembly { to from }
+            party { id name }
+        }
+    }
 }
 `;
 
 export const AssemblySummary: FunctionComponent = () => {
     const { assembly_id } = useParams();
-    const { loading, error, data } = useQuery<{ AssemblyGovernment: Array<GovernmentSession> }>(
+    const { loading, error, data } = useQuery<{
+        AssemblyGovernment: GovernmentSession[] ,
+        AssemblyInflation: InflationType[] ,
+    }>(
         ASSEMBLIES_QUERY,
         { variables: { assembly: assembly_id } }
     );
@@ -45,8 +44,9 @@ export const AssemblySummary: FunctionComponent = () => {
 
     return (
         <>
+            <InflationTimeline data={data?.AssemblyInflation!} />
             <GovernmentTimeline sessions={data?.AssemblyGovernment!} />
-            <pre>{JSON.stringify(data?.AssemblyGovernment, undefined, 4)}</pre>
+            <pre>{JSON.stringify(data?.AssemblyInflation, undefined, 4)}</pre>
         </>
     )
 }

@@ -44,6 +44,16 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
         return [...previous, current.constituency!];
     }, []);
 
+    const types = sessions.reduce<string[]>((previous, current) => {
+        if (current.type === undefined) {
+            return previous;
+        }
+        if (previous.find(type => type === current.type)) {
+            return previous;
+        }
+        return [...previous, current.type!];
+    }, []);
+
     return (
         <section className={classVariants('congressman-sitting-card', variation === 'vertical' ? ['vertical'] : ['horizontal'])}>
             <aside className="congressman-sitting-card__avatar">
@@ -73,6 +83,14 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
                         </li>
                     ))}
                 </ul>
+                <ul className="congressman-sitting-card__list">
+                    {types.map(type => (
+                        <li key={type} className="congressman-sitting-card__subtitle">
+                            {type}
+                        </li>
+                    ))}
+                </ul>
+
             </div>
             <footer className="congressman-sitting-card__footer">
                 <Timeline key={assembly.id} assembly={assembly} sessions={sessions} />

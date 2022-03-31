@@ -50,7 +50,6 @@ query AssemblyParties($assembly: ID!) {
         from
         to
         abbr
-        type
       }
     }
   }

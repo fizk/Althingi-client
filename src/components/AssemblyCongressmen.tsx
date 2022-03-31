@@ -20,9 +20,26 @@ query AssemblyCongressmen($assembly: ID!) {
     Substitutes: AssemblyCongressmen(assembly: $assembly, type: SUBSTITUTE) {
         ...congressmanSessions
     }
+    Presidents: AssemblyPresidents(assembly: $assembly) {
+        ...presidentSessions
+    }
 }
 
 fragment congressmanSessions on CongressmanSessions {
+    id
+    person { id name }
+    assembly { id from to }
+    sessions {
+        id
+        from
+        to
+        abbr
+        constituency { id name }
+        party { id name color }
+    }
+}
+
+fragment presidentSessions on CongressmanSessions {
     id
     person { id name }
     assembly { id from to }
@@ -44,6 +61,7 @@ export function AssemblyCongressmen () {
     const { loading, error, data } = useQuery<{
         Primaries: Array<CongressmanSessionsType>,
         Substitutes: Array<CongressmanSessionsType>,
+        Presidents: Array<CongressmanSessionsType>,
     }>(
         ASSEMBLY_CONGRESSMEN_QUERY,
         {variables: {assembly: assembly_id}}
@@ -62,6 +80,20 @@ export function AssemblyCongressmen () {
                 </LayoutSwitch>
             </div>
             <section className="assembly-congressmen__section">
+                <h3>Forsetar ({data?.Presidents.length})</h3>
+                <ul className={classVariants('assembly-congressmen__list', layout === 'list' ? ['list'] : ['grid'])}>
+                    {data?.Presidents.map(({id, assembly, person, sessions}) => (
+                        <li key={id} className="assembly-congressmen__list-item">
+                            <Card>
+                                <CongressmanSittingCard
+                                    variation={layout === 'grid' ? 'vertical' : 'horizontal'}
+                                    person={person}
+                                    sessions={sessions}
+                                    assembly={assembly} />
+                            </Card>
+                        </li>
+                    ))}
+                </ul>
                 <h3>Þingmenn ({data?.Primaries.length})</h3>
                 <ul className={classVariants('assembly-congressmen__list', layout === 'list' ? ['list'] : ['grid'])}>
                     {data?.Primaries.map(({id, assembly, person, sessions}) => (
