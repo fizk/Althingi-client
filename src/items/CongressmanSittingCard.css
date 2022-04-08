@@ -1,6 +1,8 @@
 
 .congressman-sitting-card {
-
+    display: grid;
+    grid-template-rows: 1fr auto auto;
+    height: 100%;
 }
 .congressman-sitting-card__footer {
     padding: var(--space-md);
@@ -15,72 +17,3 @@
     border: none;
     border-bottom: 1px solid var(--color-light);
 }
-
-/* .congressman-sitting-card {
-    grid-template-columns: auto 1fr;
-    display: grid;
-    gap: var(--space-md);
-    padding: var(--space-md);
-}
-
-.congressman-sitting-card__avatar {
-    grid-row: 1 / span 3;
-}
-.congressman-sitting-card__header {}
-.congressman-sitting-card__content {
-    grid-column: 2 / span 1;
-}
-.congressman-sitting-card__footer {
-    grid-column: 2 / span 1;
-}
-.congressman-sitting-card__title {
-    font-weight: var(--font-weight-bold);
-    font-size: var(--font-md);
-    margin: 0;
-}
-.congressman-sitting-card__subtitle {
-    font-weight: var(--font-weight-thin);
-    font-size: var(--font-sm);
-    margin: 0;
-}
-.congressman-sitting-card__list {
-    list-style: none;
-    padding: 0;
-} */
-
-/*
-    CLASS VARIATIONS
-*/
-
-
-/* vertical */
-.congressman-sitting-card--vertical {
-    /* vertical is the default and the rules are listed above */
-}
-
-/* horizontal */
-/* .congressman-sitting-card--horizontal {
-    grid-template-columns: auto 1fr 1fr ;
-    grid-template-rows: 1fr 1fr;
-    column-gap: var(--space-md);
-    row-gap: 0;
-
-    & .congressman-sitting-card__avatar {
-        grid-column: 1 / span 1;
-        grid-row: 1 / span 2;
-    }
-    & .congressman-sitting-card__header {
-        grid-column: 2 / span 1;
-        grid-row: 1 / span 1;
-    }
-    & .congressman-sitting-card__content {
-        grid-column: 2 / span 1;
-        grid-row: 2 / span 1;
-    }
-    & .congressman-sitting-card__footer {
-        grid-column: 3 / span 1;
-        grid-row: 1 / span 2;
-    }
-} */
-
-

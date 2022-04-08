@@ -16,8 +16,6 @@ query AssemblyConstituencies($assembly: ID!) {
   AssemblyConstituencies (assembly: $assembly, type: PRIMARY) {
     id
     name
-    abbrShort
-    abbrLong
     description
     assembly { id from to }
     sessions {
@@ -25,11 +23,10 @@ query AssemblyConstituencies($assembly: ID!) {
       person { id name}
       sessions {
         id
-        party { id name color }
-        constituency { id name }
         from
         to
         abbr
+        party { id name color }
       }
     }
   }

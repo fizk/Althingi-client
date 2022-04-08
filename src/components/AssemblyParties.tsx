@@ -16,41 +16,17 @@ query AssemblyParties($assembly: ID!) {
   AssemblyParties (assembly: $assembly, type: PRIMARY) {
     id
     name
-    abbrShort
-    abbrLong
     color
-    assembly {
-      id
-      from
-      to
-    }
+    assembly { id from to }
     sessions {
       id
-      person {
-        id
-        name
-        birth
-        abbreviation
-      }
+      person { id name }
       sessions {
         id
-        party {
-          id
-          name
-          abbrShort
-          abbrLong
-          color
-        }
-        constituency {
-          id
-          name
-          abbrShort
-          abbrLong
-          description
-        }
         from
         to
         abbr
+        constituency { id name }
       }
     }
   }

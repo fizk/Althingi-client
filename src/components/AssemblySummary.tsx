@@ -46,7 +46,6 @@ export const AssemblySummary: FunctionComponent = () => {
         <>
             <InflationTimeline data={data?.AssemblyInflation!} />
             <GovernmentTimeline sessions={data?.AssemblyGovernment!} />
-            <pre>{JSON.stringify(data?.AssemblyInflation, undefined, 4)}</pre>
         </>
     )
 }

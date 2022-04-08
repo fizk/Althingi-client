@@ -5,7 +5,6 @@ import { CongressmanCard } from './CongressmanCard';
 import { PartyBadge } from '../items/PartyBadge';
 import { ConstituencyBadge } from '../items/ConstituencyBadge';
 import { LabelBadge } from '../items/LabelBadge';
-import { Link } from 'react-router-dom';
 import type {
     AssemblyType,
     SessionType,
@@ -60,16 +59,12 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
                 <ul className="congressman-sitting-card__list">
                     {parties.map(party => (
                         <li key={party.id}>
-                            <Link to={`/loggjafarthing/${assembly.id}/thingflokkar/${party.id}`}>
-                                <PartyBadge party={party} />
-                            </Link>
+                            <PartyBadge party={party} />
                         </li>
                     ))}
                     {constituencies.map(constituency => (
                         <li key={constituency.id}>
-                            <Link to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency.id}`}>
-                                <ConstituencyBadge constituency={constituency} />
-                            </Link>
+                            <ConstituencyBadge constituency={constituency} />
                         </li>
                     ))}
                     {types.map(type => (
