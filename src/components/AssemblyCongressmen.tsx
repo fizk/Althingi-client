@@ -1,19 +1,19 @@
-import React, { useContext } from "react";
-import { gql, useQuery } from "@apollo/client";
-import { LayoutContext } from "../context/LayoutContext";
-import { useParams } from "react-router-dom";
-import { Spinner } from "../items/Spinner";
-import { Card } from "../items/Card";
-import { CongressmanSittingCard } from "../items/CongressmanSittingCard";
+import React, { useContext } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { LayoutContext } from '../context/LayoutContext';
+import { useParams } from 'react-router-dom';
+import { Spinner } from '../items/Spinner';
+import { Card } from '../items/Card';
+import { CongressmanSittingCard } from '../items/CongressmanSittingCard';
 import { classVariants } from '../utils/classVariants';
 import { LayoutSwitch } from '../items/LayoutSwitch';
 import { Search } from '../icons/Search';
-import type { CongressmanSessionsType } from "../index.d";
+import { ErrorMessage } from '../items/ErrorMessage';
+import type { CongressmanSessionsType } from '../index.d';
 import './AssemblyCongressmen.css';
 
 const ASSEMBLY_CONGRESSMEN_QUERY = gql`
 query AssemblyCongressmen($assembly: ID!) {
-
     Primaries: AssemblyCongressmen(assembly: $assembly, type: PRIMARY) {
         ...congressmanSessions
     }
@@ -68,7 +68,7 @@ export function AssemblyCongressmen () {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <>

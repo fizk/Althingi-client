@@ -1,0 +1,29 @@
+.inflation-timeline__tick-bar {
+    fill: none;
+    stroke: var(--color-light);
+    stroke-width: 1;
+    stroke-dasharray: 2;
+}
+
+.inflation-timeline__area {
+    fill: var(--color-default-timeline-alpha);
+}
+.inflation-timeline__path {
+    fill: none;
+    stroke: var(--color-default-timeline);
+    stroke-width: 2;
+}
+.inflation-timeline__dots {
+    fill: var(--color-neutral);
+    stroke: var(--color-default-timeline);
+    stroke-width: 2;
+}
+.inflation-timeline__dots:hover {
+    transform-box:fill-box;
+    transform-origin: left;
+    transform:scale(1.5);
+}
+.inflation-timeline__label {
+    font-size: var(--font-xs);
+    fill: var(--color-dark);
+}

@@ -1,10 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
-import { Link, useParams } from "react-router-dom";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { Link, useParams } from 'react-router-dom';
 import ReactMarkdown from 'react-markdown'
-import { Spinner } from "../items/Spinner";
-import { CongressmanCard } from "../items/CongressmanCard";
-import type { SpeechType } from "../index.d";
+import { Spinner } from '../items/Spinner';
+import { CongressmanCard } from '../items/CongressmanCard';
+import { ErrorMessage } from '../items/ErrorMessage';
+import type { SpeechType } from '../index.d';
 import './AssemblyIssueSpeeches.css';
 
 const ASSEMBLY_ISSUE_SPEECHES_QUERY = gql`
@@ -38,7 +39,7 @@ export function AssemblyIssueSpeeches () {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <ul className="assembly-issue-speech__list">

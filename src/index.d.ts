@@ -1,3 +1,9 @@
+
+declare global {
+    var PRODUCTION: boolean;
+    var IMAGE_SERVER: string;
+}
+
 export type Maybe<T> = null | undefined | T;
 export type IssueCategory = 'a' | 'b';
 export type LayoutType = 'grid' | 'list';

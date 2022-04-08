@@ -1,4 +1,22 @@
+
 .congressman-sitting-card {
+
+}
+.congressman-sitting-card__footer {
+    padding: var(--space-md);
+}
+.congressman-sitting-card__list {
+    list-style: none;
+    padding: 0;
+}
+
+.congressman-sitting-card__divider {
+    margin: 0;
+    border: none;
+    border-bottom: 1px solid var(--color-light);
+}
+
+/* .congressman-sitting-card {
     grid-template-columns: auto 1fr;
     display: grid;
     gap: var(--space-md);
@@ -28,7 +46,7 @@
 .congressman-sitting-card__list {
     list-style: none;
     padding: 0;
-}
+} */
 
 /*
     CLASS VARIATIONS
@@ -41,7 +59,7 @@
 }
 
 /* horizontal */
-.congressman-sitting-card--horizontal {
+/* .congressman-sitting-card--horizontal {
     grid-template-columns: auto 1fr 1fr ;
     grid-template-rows: 1fr 1fr;
     column-gap: var(--space-md);
@@ -63,6 +81,6 @@
         grid-column: 3 / span 1;
         grid-row: 1 / span 2;
     }
-}
+} */
 
 

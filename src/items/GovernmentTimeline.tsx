@@ -1,8 +1,8 @@
-import React from "react";
-import type { FunctionComponent } from "react";
+import React from 'react';
+import type { FunctionComponent } from 'react';
 import { scaleTime } from 'd3-scale';
 import { timeMonth } from 'd3-time';
-import { GovernmentSession } from "../index.d";
+import type { GovernmentSession } from '../index.d';
 import './GovernmentTimeline.css';
 
 interface Props {

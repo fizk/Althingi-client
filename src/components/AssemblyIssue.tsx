@@ -1,9 +1,10 @@
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
-import { Outlet, useParams } from "react-router-dom";
-import { IssueType } from "../index.d";
-import { Spinner } from "../items/Spinner";
-import { TabNav, TabNavItem, TabNavStaticItem } from "../items/TabNav";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { Outlet, useParams } from 'react-router-dom';
+import { IssueType } from '../index.d';
+import { ErrorMessage } from '../items/ErrorMessage';
+import { Spinner } from '../items/Spinner';
+import { TabNav, TabNavItem, TabNavStaticItem } from '../items/TabNav';
 import './AssemblyIssue.css';
 
 const ASSEMBLY_ISSUE_QUERY = gql`
@@ -30,7 +31,7 @@ export function AssemblyIssue() {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <section className="assembly-issue">

@@ -1,6 +1,6 @@
-import React from "react";
-import type { FunctionComponent } from "react";
-import type { DocumentType } from "../index.d";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import type { DocumentType } from '../index.d';
 import './DocumentCard.css';
 
 interface Props {

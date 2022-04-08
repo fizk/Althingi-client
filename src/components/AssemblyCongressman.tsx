@@ -1,8 +1,9 @@
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
-import { NavLink, Outlet, useParams } from "react-router-dom";
-import { Spinner } from "../items/Spinner";
-import type { PersonType } from "../index.d";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Spinner } from '../items/Spinner';
+import { ErrorMessage } from '../items/ErrorMessage';
+import type { PersonType } from '../index.d';
 import './AssemblyCongressman.css';
 
 const PERSON_QUERY = gql`
@@ -31,7 +32,7 @@ export function AssemblyCongressman () {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <section className="assembly-congressman">

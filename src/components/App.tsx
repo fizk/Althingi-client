@@ -1,6 +1,6 @@
-import React from "react";
-import type { FunctionComponent } from "react";
-import { NavLink, Route, Routes } from "react-router-dom";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import { NavLink, Route, Routes } from 'react-router-dom';
 import { Home } from './Home';
 import { Assemblies } from './Assemblies';
 import { Assembly } from './Assembly';

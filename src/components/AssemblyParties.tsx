@@ -1,12 +1,13 @@
-import React, { useContext } from "react";
-import { gql, useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
-import { LayoutContext } from "../context/LayoutContext";
-import { Spinner } from "../items/Spinner";
-import { CongressmanSittingCard } from "../items/CongressmanSittingCard";
-import { Card } from "../items/Card";
+import React, { useContext } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { LayoutContext } from '../context/LayoutContext';
+import { Spinner } from '../items/Spinner';
+import { CongressmanSittingCard } from '../items/CongressmanSittingCard';
+import { Card } from '../items/Card';
 import { LayoutSwitch } from '../items/LayoutSwitch';
-import { Search } from "../icons/Search";
+import { Search } from '../icons/Search';
+import { ErrorMessage } from '../items/ErrorMessage';
 import type { PartySessionsType } from '../index.d';
 import './AssemblyParties.css';
 
@@ -65,7 +66,7 @@ export const AssemblyParties = () => {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <pre>{JSON.stringify(error, undefined, 4)}(</pre>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <>

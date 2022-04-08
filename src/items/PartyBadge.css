@@ -2,8 +2,11 @@
     display: inline-flex;
     gap: var(--space-xs);
     align-items: center;
+    font-size: var(--font-sm);
 }
 
 .party-badge__marker {
-
+    width: var(--space-md);
+    height: var(--space-md);
+    fill: var(--color-light);
 }

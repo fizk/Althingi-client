@@ -1,8 +1,9 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
-import { useParams } from "react-router-dom";
-import { Spinner } from "../items/Spinner";
-import type { CongressmanType } from "../index.d";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { Spinner } from '../items/Spinner';
+import { ErrorMessage } from '../items/ErrorMessage';
+import type { CongressmanType } from '../index.d';
 
 const ASSEMBLY_CONGRESSMAN_QUERY = gql`
 query assemblyCongressmanCurrent($assembly: ID! $congressman: ID!) {
@@ -35,7 +36,8 @@ export const AssemblyCongressmanCurrent = () => {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
+
     return (
         <article>
             <header>

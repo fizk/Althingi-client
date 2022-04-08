@@ -1,10 +1,11 @@
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
-import { useParams } from "react-router-dom";
-import { DocumentType } from "../index.d";
-import { Spinner } from "../items/Spinner";
-import { DocumentCard } from "../items/DocumentCard";
-import { Card } from "../items/Card";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
+import { DocumentType } from '../index.d';
+import { Spinner } from '../items/Spinner';
+import { DocumentCard } from '../items/DocumentCard';
+import { Card } from '../items/Card';
+import { ErrorMessage } from '../items/ErrorMessage';
 import './AssemblyIssueDocuments.css';
 
 const ASSEMBLY_ISSUE_DOCUMENTS_QUERY = gql`
@@ -34,7 +35,7 @@ export function AssemblyIssueDocuments () {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <ul className="assembly-issue-documents__list">

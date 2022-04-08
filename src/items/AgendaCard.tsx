@@ -1,5 +1,5 @@
-import React from "react";
-import { FunctionComponent } from "react";
+import React from 'react';
+import type { FunctionComponent } from 'react';
 import type { AgendaType } from '../index.d';
 import './AgendaCard.css';
 

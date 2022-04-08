@@ -1,18 +1,18 @@
-import React from "react";
-import type { FunctionComponent } from "react";
-import { Timeline } from "./Timeline";
-import { Link } from "react-router-dom";
-import { CongressmanAvatar } from "./CongressmanAvatar";
-import { classVariants } from "../utils/classVariants";
-import { PartyBadge } from "../items/PartyBadge";
-import { ConstituencyBadge } from "../items/ConstituencyBadge";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import { Timeline } from './Timeline';
+import { CongressmanCard } from './CongressmanCard';
+import { PartyBadge } from '../items/PartyBadge';
+import { ConstituencyBadge } from '../items/ConstituencyBadge';
+import { LabelBadge } from '../items/LabelBadge';
+import { Link } from 'react-router-dom';
 import type {
     AssemblyType,
     SessionType,
     ConstituencyType,
     PartyType,
     PersonType
-} from "../index.d";
+} from '../index.d';
 import './CongressmanSittingCard.css';
 
 interface Props {
@@ -55,46 +55,34 @@ export const CongressmanSittingCard: FunctionComponent<Props> = ({ sessions, ass
     }, []);
 
     return (
-        <section className={classVariants('congressman-sitting-card', variation === 'vertical' ? ['vertical'] : ['horizontal'])}>
-            <aside className="congressman-sitting-card__avatar">
-                <CongressmanAvatar congressman={person} size={variation === 'horizontal' ? 'sm' : 'md'} />
-            </aside>
-            <header className="congressman-sitting-card__header">
-                <Link to={`/loggjafarthing/${assembly.id}/thingmenn/${person.id}`}>
-                    <h4 className="congressman-sitting-card__title">{person.name}</h4>
-                </Link>
-            </header>
-            <div className="congressman-sitting-card__content">
+        <article className="congressman-sitting-card">
+            <CongressmanCard congressman={person} to={`/loggjafarthing/${assembly.id}/thingmenn/${person.id}`}>
                 <ul className="congressman-sitting-card__list">
                     {parties.map(party => (
-                        <li key={party.id} className="congressman-sitting-card__subtitle">
-                            <Link key={party?.id} to={`/loggjafarthing/${assembly.id}/thingflokkar/${party.id}`}>
+                        <li key={party.id}>
+                            <Link to={`/loggjafarthing/${assembly.id}/thingflokkar/${party.id}`}>
                                 <PartyBadge party={party} />
                             </Link>
                         </li>
                     ))}
-                </ul>
-                <ul className="congressman-sitting-card__list">
                     {constituencies.map(constituency => (
-                        <li key={constituency.id} className="congressman-sitting-card__subtitle">
-                            <Link key={constituency?.id} to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency?.id}`}>
+                        <li key={constituency.id}>
+                            <Link to={`/loggjafarthing/${assembly.id}/kjordaemi/${constituency.id}`}>
                                 <ConstituencyBadge constituency={constituency} />
                             </Link>
                         </li>
                     ))}
-                </ul>
-                <ul className="congressman-sitting-card__list">
                     {types.map(type => (
-                        <li key={type} className="congressman-sitting-card__subtitle">
-                            {type}
+                        <li key={type}>
+                            <LabelBadge>{type}</LabelBadge>
                         </li>
                     ))}
                 </ul>
-
-            </div>
+            </CongressmanCard>
+            <hr className="congressman-sitting-card__divider" />
             <footer className="congressman-sitting-card__footer">
                 <Timeline key={assembly.id} assembly={assembly} sessions={sessions} />
             </footer>
-        </section>
+        </article>
     )
 }

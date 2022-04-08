@@ -15,7 +15,6 @@ services:
       - thumbor
     ports:
       - 8282:80
-      - 8283:443
 
   server:
     image: dev-server
@@ -35,7 +34,7 @@ services:
 
   thumbor:
     container_name: local-althingi-client-thumbor
-    image: minimalcompact/thumbor:6.7.5
+    image: minimalcompact/thumbor:7.0.0
     restart: on-failure
     logging:
         driver: "json-file"

@@ -12,7 +12,8 @@
 .tab-nav__link {
     display: inline-block;
     padding: 16px 0;
-    color: var(--color-text);
+    /** @todo can this be currentColor ? */
+    color: var(--font-color-main);
 }
 
 .tab-nav__link--active {

@@ -1,12 +1,12 @@
-import React from "react";
-import { FunctionComponent } from "react";
-import { gql, useQuery } from "@apollo/client";
-import { Link, useParams } from "react-router-dom";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { useParams } from 'react-router-dom';
 import { Spinner } from '../items/Spinner';
 import { GovernmentTimeline } from '../items/GovernmentTimeline';
-
+import { InflationTimeline } from '../items/InflationTimeline';
+import { ErrorMessage } from '../items/ErrorMessage';
 import type { GovernmentSession, InflationType } from '../index.d';
-import { InflationTimeline } from "../items/InflationTimeline";
 
 const ASSEMBLIES_QUERY = gql`
 query assemblies ($assembly: ID!){
@@ -40,7 +40,7 @@ export const AssemblySummary: FunctionComponent = () => {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <>

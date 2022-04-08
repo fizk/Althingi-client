@@ -1,6 +1,6 @@
-import React, { createContext, useState} from "react";
-import { FunctionComponent } from "react";
-import { LayoutType } from "../index.d";
+import React, { createContext, useState} from 'react';
+import type { FunctionComponent } from 'react';
+import { LayoutType } from '../index.d';
 
 interface LayoutContextProps {
     layout: LayoutType

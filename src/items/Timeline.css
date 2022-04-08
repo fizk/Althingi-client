@@ -1,10 +1,15 @@
 /* @todo make colors a css-property */
-.timeline {}
+.timeline {
+    width: 100%;
+}
 
 .timeline__bar {}
 .timeline__bar--primary {
-    fill: #87b3c6;
+    fill: var(--color-default-timeline);
 }
 .timeline__bar--secondary {
-    fill: #eae8e4;
+    fill: var(--color-secondary-timeline);
+}
+.timeline__label {
+    font-size: calc(var(--font-xs) / 2);
 }

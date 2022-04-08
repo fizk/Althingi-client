@@ -1,10 +1,11 @@
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyPlugin = require("copy-webpack-plugin");
 const crypto = require('crypto')
 
-module.exports = {
+module.exports = (env, argv) => ({
   entry: './src/index.tsx',
   module: {
     rules: [
@@ -38,6 +39,9 @@ module.exports = {
     path: path.resolve(__dirname, 'dist'),
   },
   plugins: [
+        new webpack.DefinePlugin({
+            PRODUCTION: JSON.stringify(argv.mode === 'production'),
+        }),
         new CopyPlugin({
             patterns: [
                 { from: "src/manifest.json", to: "manifest.json" },
@@ -53,4 +57,4 @@ module.exports = {
         })
     ],
   mode: 'development',
-};
+});

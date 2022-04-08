@@ -1,9 +1,9 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
-import { Link } from "react-router-dom";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { Link } from 'react-router-dom';
 import { Spinner } from '../items/Spinner';
 import { DateDisplay } from '../items/DateDisplay';
-import { PartyBadge } from '../items/PartyBadge';
+import { ErrorMessage } from "../items/ErrorMessage";
 import type { AssemblyType } from '../index.d';
 
 const ASSEMBLIES_QUERY = gql`
@@ -22,7 +22,7 @@ export const Assemblies = () => {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <ul>

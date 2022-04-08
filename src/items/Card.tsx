@@ -1,5 +1,5 @@
-import React from "react";
-import type { FunctionComponent } from "react";
+import React from 'react';
+import type { FunctionComponent } from 'react';
 import './Card.css';
 
 export const Card: FunctionComponent = ({children}) => {

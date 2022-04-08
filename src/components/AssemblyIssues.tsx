@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from "react";
-import type { ChangeEvent } from "react";
-import { gql, useQuery } from "@apollo/client";
-import { Link, useParams, useNavigate } from "react-router-dom";
-import { IssueType } from "../index.d";
-import { Spinner } from "../items/Spinner";
-import { IssueCard } from "../items/IssueCard";
-import { Card } from "../items/Card";
+import React, { useState } from 'react';
+import type { ChangeEvent } from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { Link, useParams, useNavigate } from 'react-router-dom';
+import { IssueType } from '../index.d';
+import { Spinner } from '../items/Spinner';
+import { IssueCard } from '../items/IssueCard';
+import { Card } from '../items/Card';
+import { ErrorMessage } from '../items/ErrorMessage';
 import './AssemblyIssues.css';
 
 const ASSEMBLY_ISSUE_QUERY = gql`
@@ -54,7 +55,7 @@ export function AssemblyIssues () {
     }
 
     // if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <section className="assembly-issues">

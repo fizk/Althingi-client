@@ -1,9 +1,9 @@
-import React, { useContext } from "react";
-import type { FunctionComponent } from "react";
-import { LayoutContext } from "../context/LayoutContext";
-import { classVariants } from "../utils/classVariants";
-import { List } from "../icons/List";
-import { Grid } from "../icons/Grid";
+import React, { useContext } from 'react';
+import type { FunctionComponent } from 'react';
+import { LayoutContext } from '../context/LayoutContext';
+import { classVariants } from '../utils/classVariants';
+import { List } from '../icons/List';
+import { Grid } from '../icons/Grid';
 import './LayoutSwitch.css';
 
 export const LayoutSwitch: FunctionComponent = ({ children }) => {

@@ -1,11 +1,12 @@
-import { gql, useQuery } from "@apollo/client";
-import React from "react";
-import { Link, Outlet, useParams } from "react-router-dom";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { Link, useParams } from 'react-router-dom';
 import { PlenaryType } from '../index.d';
-import { Card } from "../items/Card";
-import { AgendaCard } from "../items/AgendaCard";
-import { IssueCard } from "../items/IssueCard";
-import { Spinner } from "../items/Spinner";
+import { Card } from '../items/Card';
+import { AgendaCard } from '../items/AgendaCard';
+import { IssueCard } from '../items/IssueCard';
+import { Spinner } from '../items/Spinner';
+import { ErrorMessage } from '../items/ErrorMessage';
 import './AssemblyPlenaryAgenda.css'
 
 const ASSEMBLY_PLENARIES = gql`
@@ -43,7 +44,7 @@ export const AssemblyPlenaryAgenda = () => {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <p>Error :(</p>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <>

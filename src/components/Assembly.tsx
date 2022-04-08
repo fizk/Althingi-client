@@ -1,13 +1,14 @@
-import React from "react";
-import { gql, useQuery } from "@apollo/client";
-import { NavLink, Outlet, useParams } from "react-router-dom";
-import { Spinner } from "../items/Spinner";
-import { DateDisplay } from "../items/DateDisplay";
-import { PartyBadge } from "../items/PartyBadge";
-import { List } from "../icons/List";
-import { OpenBook } from "../icons/OpenBook";
-import { User } from "../icons/User";
-import { Watch } from "../icons/Watch";
+import React from 'react';
+import { gql, useQuery } from '@apollo/client';
+import { NavLink, Outlet, useParams } from 'react-router-dom';
+import { Spinner } from '../items/Spinner';
+import { DateDisplay } from '../items/DateDisplay';
+import { PartyBadge } from '../items/PartyBadge';
+import { List } from '../icons/List';
+import { OpenBook } from '../icons/OpenBook';
+import { User } from '../icons/User';
+import { Watch } from '../icons/Watch';
+import { ErrorMessage } from '../items/ErrorMessage';
 import type { AssemblyType } from '../index.d';
 import './Assembly.css';
 
@@ -39,7 +40,7 @@ export const Assembly = () => {
     );
 
     if (loading) return <Spinner />;
-    if (error) return <pre>{JSON.stringify(error, undefined, 4)}(</pre>;
+    if (error) return <ErrorMessage error={error} />;
 
     return (
         <>

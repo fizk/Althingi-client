@@ -1,5 +1,5 @@
-import React from "react";
-import { FunctionComponent } from "react";
+import React from 'react';
+import { FunctionComponent } from 'react';
 import type { PlenaryType } from '../index.d';
 import './PlenaryCard.css';
 

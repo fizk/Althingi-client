@@ -5,7 +5,7 @@
 
 .government-timeline__legent {
     font-size: var(--font-sm);
-    fill: var(--color-text)
+    fill: var(--font-color-main)
 }
 .government-timeline__bar {
     fill: currentColor;
@@ -14,6 +14,6 @@
     color: var(--color-default-timeline);
 }
 .government-timeline__tick-label {
-    fill: var(--color-text);
+    fill: var(--font-color-main);
     font-size: var(--font-sm);
 }

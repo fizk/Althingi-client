@@ -1,7 +1,7 @@
-import React from "react";
-import type { FunctionComponent } from "react";
-import { NavLink } from "react-router-dom";
-import { classVariants } from "../utils/classVariants";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import { NavLink } from 'react-router-dom';
+import { classVariants } from '../utils/classVariants';
 import './TabNav.css';
 
 interface TabNavProps {

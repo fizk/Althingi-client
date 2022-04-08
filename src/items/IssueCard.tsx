@@ -1,6 +1,6 @@
-import React from "react";
-import type { FunctionComponent } from "react";
-import type { IssueType } from "../index.d";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import type { IssueType } from '../index.d';
 import './IssueCard.css';
 
 interface Props {

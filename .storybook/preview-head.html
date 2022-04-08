@@ -1,20 +1,9 @@
-<!DOCTYPE html>
-<html lang="is">
-
-<head>
-    <meta charset="utf-8">
-    <title>Löggjafarþing</title>
-    <link rel="manifest" href="/manifest.json">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" media="screen" rel="stylesheet">
-    <!--script defer src="/bundle.js?<%= hash(compilation.assets['bundle.js'].source()) %>"></script-->
-    <!--link defer href="/main.css?<%= hash(compilation.assets['main.css'].source()) %>" rel="stylesheet"-->
-    <script defer src="/bundle.js"></script>
-    <link defer href="/main.css" rel="stylesheet">
-    <style>
-        :root {
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" media="screen"
+    rel="stylesheet">
+<style>
+           :root {
             --color-gray-0: rgba(255, 255, 255, 1);
             --color-gray-50: rgba(236, 239, 241, 1);
             --color-gray-100: rgba(207, 216, 220, 1);
@@ -23,7 +12,6 @@
             --color-gray-900: rgba(38, 50, 56, 1);
 
             --color-neutral: var(--color-gray-0);
-            --color-x-light: var(--color-gray-50);
             --color-light: var(--color-gray-100);
             --color-mid: var(--color-gray-300)
             --color-dark: var(--color-gray-500);
@@ -88,16 +76,4 @@
         @media screen and (min-width: 1920px) {
             /* Desktop  */
         }
-    </style>
-</head>
-
-<body>
-    <div data-react>
-        <svg class="spinner" viewBox="0 0 50 50">
-            <circle class="spinner__path" cx="25" cy="25" r="20" fill="none" stroke-width="5"></circle>
-        </svg>
-    </div>
-</body>
-
-
-</html>
+</style>

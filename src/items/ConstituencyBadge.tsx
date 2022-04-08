@@ -1,6 +1,6 @@
-import React from "react";
-import type { FunctionComponent } from "react";
-import type { ConstituencyType } from "../index.d";
+import React from 'react';
+import type { FunctionComponent } from 'react';
+import type { ConstituencyType } from '../index.d';
 import './ConstituencyBadge.css';
 
 interface Props {
@@ -10,8 +10,8 @@ interface Props {
 export const ConstituencyBadge: FunctionComponent<Props> = ({ constituency }) => {
     return (
         <span className="constituency-badge">
-            <svg className="constituency-badge__marker" width="16" height="16" viewBox="0 0 16 16">
-                <circle cy="8" cx="8" r="4" fill={'gray'} />
+            <svg className="constituency-badge__marker" width="10" height="10" viewBox="0 0 10 10">
+                <circle cy="5" cx="5" r="3" />
             </svg>{constituency?.name}
         </span>
     )
