@@ -11,6 +11,7 @@ import { AssemblyIssueSpeeches } from './AssemblyIssueSpeeches';
 import { AssemblyIssue } from './AssemblyIssue';
 import { AssemblyConstituencies } from './AssemblyConstituencies';
 import { AssemblyParties } from './AssemblyParties';
+import { AssemblyCommittees } from './AssemblyCommittees';
 import { AssemblySessions } from './AssemblySessions';
 import { AssemblyCongressmen } from './AssemblyCongressmen';
 import { AssemblyCongressman } from './AssemblyCongressman';
@@ -58,6 +59,7 @@ export const App: FunctionComponent = () => {
                         <Route path="" element={<AssemblyCongressmen />} />
                         <Route path="kjordaemi" element={<AssemblyConstituencies />} />
                         <Route path="flokkar" element={<AssemblyParties />} />
+                        <Route path="nefndir" element={<AssemblyCommittees />} />
                     </Route>
                     <Route path="thingmenn/:congressman_id" element={<AssemblyCongressman />} >
                         <Route path="" element={<AssemblyCongressmanCurrent />} />

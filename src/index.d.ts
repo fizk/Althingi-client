@@ -157,6 +157,16 @@ export interface PartySessionsType {
     assembly: AssemblyType
     sessions: CongressmanSessionsType[]
 }
+export interface CommitteeSessionsType {
+    id: number
+    name: string
+    abbrShort: string
+    abbrLong: Maybe<string>
+    assembly: AssemblyType
+    firstAssembly: AssemblyType
+    lastAssembly: AssemblyType
+    sessions: CongressmanSessionsType[]
+}
 
 export interface GovernmentSession {
     id: number,

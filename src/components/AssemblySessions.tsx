@@ -17,6 +17,9 @@ export const AssemblySessions = () => {
                 <TabNavItem to={`/loggjafarthing/${assembly_id}/thingseta/flokkar`}>
                     Þingflokkar
                 </TabNavItem>
+                <TabNavItem to={`/loggjafarthing/${assembly_id}/thingseta/nefndir`}>
+                    Nefndir
+                </TabNavItem>
             </TabNav>
             <Outlet />
         </>

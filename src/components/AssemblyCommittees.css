@@ -1,0 +1,31 @@
+.assembly-committees__list {
+    list-style: none;
+    padding: 0;
+}
+
+.assembly-committees__title {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.assembly-committees__congressmen {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(var(--size-min-card), 1fr));
+    list-style: none;
+    gap: var(--space-md);
+    padding: 0;
+}
+
+.assembly-committees__controls {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--space-md);
+    padding: var(--space-md) 0;
+}
+.assembly-committees__search {
+    border: none;
+    background: none;
+    padding: 0;
+    cursor: pointer;
+}
