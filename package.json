@@ -6,7 +6,7 @@
   "scripts": {
     "test": "./node_modules/.bin/jest",
     "build.prod": "./node_modules/.bin/webpack --mode=production",
-    "build.dev": "./node_modules/.bin/webpack --watch",
+    "build.dev": "./node_modules/.bin/webpack  --mode=development --watch",
     "storybook": "IMAGE_SERVER=http://localhost:8282 start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },

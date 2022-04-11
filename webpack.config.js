@@ -6,7 +6,10 @@ const CopyPlugin = require("copy-webpack-plugin");
 const crypto = require('crypto')
 
 module.exports = (env, argv) => ({
-  entry: './src/index.tsx',
+  entry: {
+      bundle: { import: './src/index.tsx', filename: 'bundle.js' } ,
+      sw: { import: './src/sw.ts', filename: 'sw.js' },
+    },
   module: {
     rules: [
       {
@@ -41,6 +44,7 @@ module.exports = (env, argv) => ({
   plugins: [
         new webpack.DefinePlugin({
             PRODUCTION: JSON.stringify(argv.mode === 'production'),
+            VERSION: JSON.stringify(process.env.npm_package_version),
         }),
         new CopyPlugin({
             patterns: [
@@ -52,6 +56,7 @@ module.exports = (env, argv) => ({
           template: 'src/index.html',
           inject: false,
           templateParameters: {
+              mode: argv.mode,
               hash: (source) => crypto.createHash('md5').update(source).digest("hex")
           }
         })

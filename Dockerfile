@@ -108,7 +108,8 @@ RUN if [ "$ENV" = "production" ] ; then \
 </IfModule> \n\
 <Location /> \n\
     Header add Link \"</bundle.js>;rel=preload\" \n\
-    Header add Link \"</main.css>;rel=preload\" \n\
+    Header add Link \"</sw.js>;rel=preload\" \n\
+    Header add Link \"</bundle.css>;rel=preload\" \n\
 </Location>" >> /usr/local/apache2/conf/httpd.conf;\
 fi ;
 

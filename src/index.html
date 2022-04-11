@@ -10,9 +10,14 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400&display=swap" media="screen" rel="stylesheet">
     <!--script defer src="/bundle.js?<%= hash(compilation.assets['bundle.js'].source()) %>"></script-->
-    <!--link defer href="/main.css?<%= hash(compilation.assets['main.css'].source()) %>" rel="stylesheet"-->
+    <!--link defer href="/main.css?<%= hash(compilation.assets['bundle.css'].source()) %>" rel="stylesheet"-->
+    <script>
+        if ('<%= mode %>' !== 'development' && 'serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js');
+        }
+    </script>
     <script defer src="/bundle.js"></script>
-    <link defer href="/main.css" rel="stylesheet">
+    <link defer href="/bundle.css" rel="stylesheet">
     <style>
         :root {
             --color-gray-0: rgba(255, 255, 255, 1);
@@ -98,6 +103,5 @@
         </svg>
     </div>
 </body>
-
 
 </html>

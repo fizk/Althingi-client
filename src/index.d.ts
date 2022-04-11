@@ -2,6 +2,7 @@
 declare global {
     var PRODUCTION: boolean;
     var IMAGE_SERVER: string;
+    var VERSION: string;
 }
 
 export type Maybe<T> = null | undefined | T;
