@@ -20,6 +20,7 @@ fragment plenary on Plenary {
     assembly {id}
     from
     to
+    duration
 }
 `;
 

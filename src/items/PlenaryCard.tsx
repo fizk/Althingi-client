@@ -16,6 +16,7 @@ export const PlenaryCard: FunctionComponent<Props> = ({ plenary }) => {
             <time className="plenary-subtitle">
                 {plenary.from}
             </time>
+            <span> | {plenary.duration} minutur</span>
         </div>
     )
 }

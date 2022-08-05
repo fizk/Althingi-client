@@ -105,6 +105,7 @@ export interface PlenaryType {
     assembly: AssemblyType
     from: string
     to: string
+    duration: number
     agenda: PlenaryItemType[]
 }
 

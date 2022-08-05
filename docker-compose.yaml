@@ -6,12 +6,13 @@ services:
     build:
       args:
         - ENV=development
+        - API_HOST=http://${DOCKER_GATEWAY_HOST:-host.docker.internal}:3000
       context: .
       dockerfile: Dockerfile
     volumes:
       - ./dist:/usr/local/apache2/htdocs/
     depends_on:
-      - server
+    #   - server
       - thumbor
     ports:
       - 8282:80
